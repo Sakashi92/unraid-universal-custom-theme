@@ -430,7 +430,7 @@ fi
 #############################
 if [ $Custom_Icon = 'Y' ] || [ $Custom_Icon = 'y' ]; then
 	echo "custom icons copied"
-	cp /boot/extra/theme/icons/power.png /usr/local/emhttp/plugins/dynamix.system.buttons/icons/power.png
+	cp /boot/extra/uuct/icons/power.png /usr/local/emhttp/plugins/dynamix.system.buttons/icons/power.png
 else 
 	echo "original icons copied"
 	cp /tmp/Original_Theme_Files/power.png /usr/local/emhttp/plugins/dynamix.system.buttons/icons/power.png
@@ -589,10 +589,10 @@ sed -i "s/$old_light_color_a/$new_light_color/gI" /usr/local/emhttp/plugins/dyna
 ######################################################################
 if [ $Black_Login = 'Y' ] || [ $Black_Login = 'y' ]; then
 	echo "login blacked"
-	cp /boot/extra/theme/login/black.login.php /usr/local/emhttp/webGui/include/.login.php
+	cp /boot/extra/uuct/login/black.login.php /usr/local/emhttp/webGui/include/.login.php
 else 
 	echo "login unblacked"
-	cp /boot/extra/theme/login/original.login.php /usr/local/emhttp/webGui/include/.login.php
+	cp /boot/extra/uuct/login/original.login.php /usr/local/emhttp/webGui/include/.login.php
 fi
 sed -i "s/$old_dark_color_a/$new_dark_color/gI" /usr/local/emhttp/webGui/include/.login.php
 sed -i "s/$old_light_color_a/$new_light_color/gI" /usr/local/emhttp/webGui/include/.login.php
