@@ -169,10 +169,15 @@ if [ $Custom_Icon = 'Y' ] || [ $Custom_Icon = 'y' ]; then
 fi
 
 	echo "Der Ordner /boot/config/plugins/user.scripts/scripts/uuct kann nicht gefunden werden. Wird erstellt..."
+
+if [ -d /boot/config/plugins/user.scripts/scripts/uuct ]; then
+	echo ""
+else
 	mkdir /boot/config/plugins/user.scripts/scripts/uuct
 	touch /boot/config/plugins/user.scripts/scripts/uuct/name
 	echo "uuct" > /boot/config/plugins/user.scripts/scripts/uuct/name
 	cp /boot/extra/uuct/styles/accent_normal.sh /boot/config/plugins/user.scripts/scripts/uuct/script
+fi
 rm /boot/config/plugins/user.scripts/scripts/uuct/script
 touch /boot/config/plugins/user.scripts/scripts/uuct/script
 cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
@@ -190,7 +195,6 @@ sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/config/plugins/theme.engine/themes/uuc
 	echo "###############################################################################################"
 	echo "Zuletzt nur noch das Script uuct ausführen und es automatisch mit dem Array starten lassen.   #"
 	echo "Farben kannst du mit dem Script hier bequem einstellen.                                       #"
-	echo "Jedoch muss das Script uuct bei jeder änderung einmal mit ausgeführt werden.                  #"
     echo "######################################################################                        #"
 sh /boot/config/plugins/user.scripts/scripts/uuct/script
 
