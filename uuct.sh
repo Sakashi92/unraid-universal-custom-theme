@@ -191,6 +191,9 @@ sed -i "s/ffffff/$Text/gI" /boot/config/plugins/theme.engine/themes/uuct-black.c
 sed -i "s/00ddfe/$Light_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
 sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
 
+new_light_color="#$Light_Color"
+cp /boot/extra/uuct/ca/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+sed -i "s/#42ADFA/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 
 	echo "###############################################################################################"
 	echo "Zuletzt nur noch das Script uuct ausführen und es automatisch mit dem Array starten lassen.   #"
