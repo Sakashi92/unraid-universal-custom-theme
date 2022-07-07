@@ -1,0 +1,14 @@
+/* NAV right*/
+
+#nav-right {
+	float: left !important;
+	padding: 5px !important;
+}
+
+/* NAV left*/
+
+#nav-left {
+    float: right!important;
+    padding: 5px !important;
+
+}

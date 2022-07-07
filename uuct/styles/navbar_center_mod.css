@@ -1,0 +1,25 @@
+/* NAV right*/
+
+#nav-right {
+	float: left !important;
+	padding: 5px !important;
+}
+
+#nav-block {
+	float: left !important;
+	
+}
+#nav-item,  {
+	float:right !important;
+	
+}
+
+
+
+/* NAV left*/
+
+#nav-left {
+    float: right!important;
+    padding: 5px !important;
+
+}
