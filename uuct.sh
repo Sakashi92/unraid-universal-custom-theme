@@ -68,7 +68,7 @@ updater="n"
 #############################################################################
 ## Script startet ab hier - nicht verändern wenn du nicht weißt was du tust #   
 #############################################################################
-first_start="n"
+first_start="y"
 
 if [ -d /boot/config/plugins/user.scripts/scripts/uuct_installer ]; then
 	sed -i 's/first_start="y"/first_start="n"/gI' /boot/config/plugins/user.scripts/scripts/uuct_installer/script
@@ -77,6 +77,7 @@ else
 	echo "WICHTIG DAS SCRIPT KOMPLETT NEU ANLEGEN UNTER DEM RICHTIGEN NAMEN."
 	exit 1
 fi
+
 
 if [ -d /boot/extra ]; then
 	echo ""
@@ -92,15 +93,20 @@ if [ $first_start = 'Y' ] || [ $first_start = 'y' ]; then
 	echo "######################################################################"
 	echo "Willkommen im unRAID Universal Custom Theme installer."
 	echo "Da du den installer das erste mal startest werden einige Daten von github heruntergeladen."
-	echo "Github: *link*"
+	echo "Github: *https://github.com/Sakashi92/unraid-universal-custom-theme/archive/refs/heads/dev.zip*"
 	echo "Die Daten werden in /boot/extra/uuct abgelegt und sind für das Theme notwendig."
     echo "######################################################################"
+	cd /tmp
+	wget https://github.com/Sakashi92/unraid-universal-custom-theme/archive/refs/heads/dev.zip
+	unzip dev.zip
+	cp -r /tmp/unraid-universal-custom-theme-dev/uuct /boot/extra/
+	rm -r dev.zip
+	rm -r unraid-universal-custom-theme-dev
+	echo "######################################################################"
 	echo "Du kannst jetzt zu den Einstellungen -> Theme Engine unter Saved Themes das Theme Uuct-black laden"
 	echo "Danach bearbeitest du das Script hier mit deinen Farbwerten und startest das Script neu."
     echo "Die Farben werden in hex angegeben jedoch ohne # "
     echo "######################################################################"
-
-
 if [ -d /boot/config/plugins/user.scripts/scripts/uuct ]; then
 	echo ""
 else
@@ -112,7 +118,6 @@ else
 	cat /boot/extra/uuct/styles/uuct.css > /boot/config/plugins/theme.engine/themes/uuct-black.css
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 fi
-
 
 else 
 
@@ -163,6 +168,11 @@ if [ $Custom_Icon = 'Y' ] || [ $Custom_Icon = 'y' ]; then
 	sed -i 's/Custom_Icon="y"/Custom_Icon="n"/gI' /boot/extra/uuct/styles/accent_normal.sh
 fi
 
+	echo "Der Ordner /boot/config/plugins/user.scripts/scripts/uuct kann nicht gefunden werden. Wird erstellt..."
+	mkdir /boot/config/plugins/user.scripts/scripts/uuct
+	touch /boot/config/plugins/user.scripts/scripts/uuct/name
+	echo "uuct" > /boot/config/plugins/user.scripts/scripts/uuct/name
+	cp /boot/extra/uuct/styles/accent_normal.sh /boot/config/plugins/user.scripts/scripts/uuct/script
 rm /boot/config/plugins/user.scripts/scripts/uuct/script
 touch /boot/config/plugins/user.scripts/scripts/uuct/script
 cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script

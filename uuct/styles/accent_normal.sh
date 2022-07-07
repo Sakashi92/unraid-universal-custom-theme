@@ -412,7 +412,6 @@ Original_File_Loc=/usr/local/emhttp/plugins/user.scripts/
 plgOriginal_File_Loc=/boot/config/plugins/
 if test -f "$backup_files_location2/$File"; then
 	originalversion=`grep -m 1 '###' /boot/config/plugins/user.scripts.plg`	
-	backupversion=`grep -m 1 '###' /boot/config/plugins/Original_Theme_Files/user.scripts.plg`	
 	if [ "$originalversion" = "$backupversion" ]; then
 		cp $backup_files_location2/$File $Original_File_Loc/$File
 	else
