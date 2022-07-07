@@ -6,7 +6,7 @@
 ##  ##    ##   ##    ##  ##          ##	         ####### ##      ######  ## ######     ##                #
 ##  ##    ##   ##    ##  ##          ##	              ## ##      ##   ## ## ##         ##                #
 ##  ########   ########   ######     ##	         #######  ###### ##   ## ## ##         ##                #
-##  unRAID Universal Custom Theme v0.1                                                                   #
+##  unRAID Universal Custom Theme v0.3                                                                   #
 ##                                                                                                       #
 ##                                       Created by: Sakashi                                             #
 ##                                                                                                       #
@@ -188,7 +188,7 @@ sed -i "s/0062aa/$Light_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-
 sed -i "s/030303/$Dark_Color_Title/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
 sed -i "s/000000/$Background/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
 sed -i "s/ffffff/$Text/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
-sed -i "s/00ddfe/$Light_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
+sed -i "s/00ddfe/$Dark_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
 sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
 
 new_light_color="#$Light_Color"

@@ -820,6 +820,16 @@ blockquote {
 blockquote a {
     color: #0062aa;
 }
+
+/* SWITCH BUTTON*/
+
+.switch-button-label.on {
+	color: var(--link-color-hover) !important;
+}
+.switch-button-background.checked {
+	background-color: var(--link-color-hover) !important;
+}
+
 /* MY SERVERS */
 	
 .UnraidUPC .--hasBanner-custom .UnraidUPC-dropdown {
