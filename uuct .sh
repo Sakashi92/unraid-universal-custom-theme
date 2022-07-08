@@ -7,7 +7,7 @@
 ##       ##    ##   ##    ##  ##          ##	           ## ##      ##   ## ## ##         ##          ##
 ##       ########   ########   ######     ##	      #######  ###### ##   ## ## ##         ##          ##
 ##                                                                                                      ##
-##                               unRAID Universal Custom Theme v0.4                                     ##
+##                               unRAID Universal Custom Theme v0.5                                     ##
 ##                                       Created by: Sakashi                                            ##
 ##                                                                                                      ##
 ##########################################################################################################
@@ -18,24 +18,24 @@
 ## Black_Login = Black Background | Custom_Icon = Custom icons for the black Background                 ##
 ## n = nein / no    |    y = ja / yes                                                                   ##
 ##########################################################################################################
-Black_Login="n"
-Custom_Icon="n"
+Black_Login='n'
+Custom_Icon='n'
 ##########################################################################################################
 ## Benutzerdefinierte Navigationsleiste  |  Custom Navigationbar                                        ##
 ## n = nein / no    |    y = ja / yes      |  c = mitte | center                                        ##
 ##########################################################################################################
-navbar_swap="c"
+navbar_swap='n'
 ##########################################################################################################
 ## Blauer Accent | 0062aa = Dunkelblau | 00ddfe = Hellblau                                              ##
 ## blue accent   | 0062aa = dark blue  | 00ddfe = light blue                                            ##
 ## Hex Farben ohne # benutzen!                                                                          ##
 ## hex color without #!                                                                                 ##
 ##########################################################################################################
-Dark_Color="0062aa"
-Light_Color="0062aa"
-Dark_Color_Title="000000"    # Hintergrundfarbe der Abschnitte für Farbverlauf *1                       ##
-Background="000000"          # Hintergrundfarbe | Background color             *2                       ##
-Text="ffffff"                # Textfarbe der kompletten Schrift | textcolor for all the text *3         ##
+Dark_Color='0062aa'
+Light_Color='0062aa'
+Dark_Color_Title='000000'    # Hintergrundfarbe der Abschnitte für Farbverlauf *1                       ##
+Background='000000'          # Hintergrundfarbe | Background color             *2                       ##
+Text='ffffff'                # Textfarbe der kompletten Schrift | textcolor for all the text *3         ##
 ##########################################################################################################
 ## *1 = titlecolor for column in rainbow | *2 = background color for the page                           ##
 ## *3 = textcolor for complete text in unraid                                                           ##
@@ -44,12 +44,12 @@ Text="ffffff"                # Textfarbe der kompletten Schrift | textcolor for 
 ## 0, 98, 170 ist blau | 0, 98, 170 is blue                                                             ##
 ## Navigationsleiste Farbe beim rüberfahren |      Navbar Highlight Color                               ##
 ##########################################################################################################
-RGB_Color="0, 98, 170"
+RGB_Color='0, 98, 170'
 ##########################################################################################################
 ## Hier kannst du alles rückgänig machen y = alles löschen | n = alles so lassen wie es ist             ##
 ## here can you delete the theme complete. y = for delete all foles | n = nothing                       ##
 ##########################################################################################################
-Restore_Colors="n"
+Restore_Colors='n'
 ##########################################################################################################
 ##########################################################################################################
 ##                                Benutzereingabe Ende  / Custom Settings End                           ##
@@ -66,7 +66,7 @@ Restore_Colors="n"
 #############################################################################
 ## Script startet ab hier - nicht verändern wenn du nicht weißt was du tust #   
 #############################################################################
-first_start="y"
+first_start='y'
 
 if [ $Restore_Colors = "Y" ] || [ $Restore_Colors = "y" ]; then
 
@@ -88,7 +88,7 @@ exit 1
 fi
 
 if [ -d /boot/config/plugins/user.scripts/scripts/uuct_installer ]; then
-	sed -i '68,70s/first_start="y"/first_start="n"/gI' /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "68,70s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 else
 	echo 'Der Scriptname ist falsch, bitte das Script komplett neu anlegen mit dem Namen "uuct_installer"! ohne "" '
 	echo "WICHTIG DAS SCRIPT KOMPLETT NEU ANLEGEN UNTER DEM RICHTIGEN NAMEN."
@@ -106,6 +106,38 @@ fi
 
 if [ $first_start = "Y" ] || [ $first_start = "y" ]; then
 
+if [ -d /boot/extra/uuct/backup ]; then
+	echo "Backup der Variablen gefunden. Wird wiederhergestellt"
+	sed -i "21s/Black_Login='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n1 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "22s/Custom_Icon='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n2 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "27s/navbar_swap='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n3 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "34s/Dark_Color='0062aa'/$(cat /boot/extra/uuct/backup/color.cfg | head -n4 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "35s/Light_Color='0062aa'/$(cat /boot/extra/uuct/backup/color.cfg | head -n5 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "36s/Dark_Color_Title='000000'/$(cat /boot/extra/uuct/backup/color.cfg | head -n6 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "37s/Background='000000'/$(cat /boot/extra/uuct/backup/color.cfg | head -n7 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "38s/Text='ffffff'/$(cat /boot/extra/uuct/backup/color.cfg | head -n8 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "47s/RGB_Color='0, 98, 170'/$(cat /boot/extra/uuct/backup/color.cfg | head -n9 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "52s/Restore_Colors='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "69s/first_start='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	cat /boot/extra/uuct/backup/color.cfg
+	sleep 3
+else
+	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
+	mkdir /boot/extra/uuct/backup
+	touch /boot/extra/uuct/backup/color.cfg
+	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
+	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
+	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Light_Color='$Light_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
+	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
+	echo "first_start='$first_start'" >> /boot/extra/uuct/backup/color.cfg
+fi
+
 	echo "######################################################################"
 	echo "Willkommen im unRAID Universal Custom Theme installer."
 	echo "Da du den installer das erste mal startest werden einige Daten von github heruntergeladen."
@@ -121,6 +153,8 @@ if [ $first_start = "Y" ] || [ $first_start = "y" ]; then
 	cp -r /tmp/unraid-universal-custom-theme-dev/uuct /boot/extra/
 	rm -r dev.zip
 	rm -r unraid-universal-custom-theme-dev
+	echo "Es wird nach ein vorhandenes Backup geschaut."	
+
 	echo "######################################################################"
 	echo "######################################################################"
 	echo "######################################################################"
@@ -140,6 +174,7 @@ else
 	cp /boot/extra/uuct/styles/uuct.css /boot/config/plugins/theme.engine/themes/uuct-black.css
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 fi
+
 else 
 
 if ! [[ $Dark_Color =~ ^[0-9A-Fa-f]{6}$ ]] ; then
@@ -158,6 +193,26 @@ if ! [[ $Background =~ ^[0-9A-Fa-f]{6}$ ]] ; then
 	echo " "
 	error="Yes"
 fi
+
+if [ -d /boot/extra/uuct/backup ]; then
+	echo ""
+else
+	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
+	mkdir /boot/extra/uuct/backup
+	touch /boot/extra/uuct/backup/color.cfg
+	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
+	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
+	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Light_Color='$Light_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
+	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
+	echo "first_start='$first_start'" >> /boot/extra/uuct/backup/color.cfg
+fi
+
 	echo "CSS und sh script mit den Farben wird erstellt."
 	if [ $navbar_swap = 'N' ] || [ $navbar_swap = 'n' ]; then
 	cat /boot/extra/uuct/styles/uuct.css > /boot/config/plugins/theme.engine/themes/uuct-black.css

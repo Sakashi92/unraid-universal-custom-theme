@@ -1,7 +1,10 @@
 #!/bin/sh
 echo "#############################################################################################"
-echo "Bei einem Update gehen alle selbstgemachten Einstellungen verloren,"
-echo "sichere vorher deine hexwerte seperat um die Farben wiederherzustellen"
+echo "Bei einem Update gehen alle selbstgemachten Einstellungen nicht verloren,"
+echo "jedoch kann ich dir nicht garantieren das meine Backup und wiederherstellungsfuntkion"
+echo "reibungslos funktionieren, dies ist noch eine experimentelle Funktion."
+echo "Sichere vorher deine hexwerte seperat um die Farben wiederherzustellen"
+echo "Dies gilt nur ab einer Script Version von 0.5. Alles darunter unterstützt kein Backup."
 echo "Du hast 10 sec Zeit das Script mit strg + c abzubrechen!"
 echo "#############################################################################################"
 sleep 1
