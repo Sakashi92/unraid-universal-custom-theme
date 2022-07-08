@@ -4,7 +4,7 @@ Created by: Sakashi<br /><br />
 Features: <br />
 - Easy to Use - man braucht keine html, css oder sonstige kentnisse  <br />
 - Einfacher zu verstehender Wizard <br />
-- Auto Backup und Wiederherstellung der Usereingaben bei updates <br />
+- Auto Backup und Wiederherstellung der Usereingaben bei Updates <br />
 - Deinstallationsfunktion um alles wieder rückgängig zu machen <br />
 
 Anleitung:<br />
