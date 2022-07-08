@@ -123,7 +123,7 @@ if [ -d /boot/extra/uuct/backup ]; then
 	sed -i "37s/Background='000000'/$(cat /boot/extra/uuct/backup/color.cfg | head -n7 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 	sed -i "38s/Text='ffffff'/$(cat /boot/extra/uuct/backup/color.cfg | head -n8 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 	sed -i "47s/RGB_Color='0, 98, 170'/$(cat /boot/extra/uuct/backup/color.cfg | head -n9 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	sed -i "52s/Restore_Colors='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+#	sed -i "52s/Restore_Colors='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 #	sed -i "69s/first_start='y'/$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 	cat /boot/extra/uuct/backup/color.cfg
 	sleep 3
@@ -140,7 +140,7 @@ else
 	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
+#	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
 #	echo "first_start='$first_start'" >> /boot/extra/uuct/backup/color.cfg
 fi
 
@@ -214,8 +214,8 @@ else
 	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
-	echo "first_start='$first_start'" >> /boot/extra/uuct/backup/color.cfg
+#	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
+#	echo "first_start='$first_start'" >> /boot/extra/uuct/backup/color.cfg
 fi
 
 
