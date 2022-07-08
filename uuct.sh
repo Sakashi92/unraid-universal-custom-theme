@@ -7,7 +7,7 @@
 ##       ##    ##   ##    ##  ##          ##	           ## ##      ##   ## ## ##         ##          ##
 ##       ########   ########   ######     ##	      #######  ###### ##   ## ## ##         ##          ##
 ##                                                                                                      ##
-##                               unRAID Universal Custom Theme v0.5                                     ##
+##                               unRAID Universal Custom Theme v0.4                                     ##
 ##                                       Created by: Sakashi                                            ##
 ##                                                                                                      ##
 ##########################################################################################################
@@ -106,6 +106,16 @@ fi
 
 if [ $first_start = "Y" ] || [ $first_start = "y" ]; then
 
+if [ -d /boot/extra/ ]; then
+	echo ""
+else
+	mkdir /boot/extra
+fi
+if [ -d /boot/extra/uuct ]; then
+	echo
+else
+	mkdir /boot/extra/uuct
+fi
 if [ -d /boot/extra/uuct/backup ]; then
 	echo "Backup der Variablen gefunden. Wird wiederhergestellt"
 	sed -i "21s/Black_Login='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n1 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
