@@ -7,7 +7,7 @@ Im unRAID-Terminal dieses Script ausführen und den anweißungen befolgen: <br /
 
 bash <(curl -s https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/web_installer.sh) <br />
 
-Befolgt ihr die Anweißungen sollte alles klappen ohne es genauer zu erklären. <br />
+Befolgt ihr die Anweisungen sollte alles klappen ohne es genauer zu erklären. <br />
 
 <br />Folgende Vorraussetzung braucht ihr:<br />
 User.Script - muss installiert sein<br />
