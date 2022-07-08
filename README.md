@@ -1,14 +1,13 @@
-unRAID Universal Custom Theme v0.4
-Created by: Sakashi
+unRAID Universal Custom Theme v0.4 <br />
+Created by: Sakashi<br /><br />
 
-Um die README vernünftig lesen zu können bitte hier klicken: https://github.com/Sakashi92/unraid-universal-custom-theme/blob/dev/README.md <br /><br /><br /><br /><br /><br /><br />
-Anleitung:
+Anleitung:<br />
 
-Im unRAID-Terminal dieses Script ausführen und den anweißungen befolgen: 
+Im unRAID-Terminal dieses Script ausführen und den anweißungen befolgen: <br />
 
-bash <(curl -s https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/web_installer.sh)
+bash <(curl -s https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/web_installer.sh) <br />
 
-Befolgt ihr die Anweißungen sollte alles klappen ohne es genauer zu erklären.
+Befolgt ihr die Anweißungen sollte alles klappen ohne es genauer zu erklären. <br />
 
 <br />Folgende Vorraussetzung braucht ihr:<br />
 User.Script - muss installiert sein<br />
