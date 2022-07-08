@@ -213,10 +213,12 @@ sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Us
 
 sh /boot/config/plugins/user.scripts/scripts/uuct/script
 
-echo "###############################################################################################"
-echo "Zuletzt nur noch das Script uuct ausführen und es automatisch mit dem Array starten lassen.   #"
-echo "Farben kannst du mit dem Script hier bequem einstellen.                                       #"
-echo "###############################################################################################"
+echo "############################################################################################################"
+echo "#   Zuletzt nur noch das Script uuct ausführen und es automatisch mit dem Array starten lassen.            #"
+echo "#   Farben kannst du mit dem Script hier bequem einstellen.                                                #"
+echo "#   Unter Einstellungen -> Anzeigeeinstellungen  kannst du noch Farben für den Header bereich einstellen   #"
+echo "#   Unter Einstellungen -> Theme Engine kannst du auch die Green Orbs anpassen in der Farbe die du willst. #"
+echo "############################################################################################################"
 
 
 fi
