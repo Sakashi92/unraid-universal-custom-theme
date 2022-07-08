@@ -79,6 +79,7 @@ if [ $Restore_Colors = "Y" ] || [ $Restore_Colors = "y" ]; then
 	sh /boot/config/plugins/user.scripts/scripts/uuct/script
 	cp /boot/extra/uuct/ca/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.cfg
+	rm -r /boot/config/plugins/theme.engine/theme.engine.cfg
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.css
 	rm -r /boot/extra/uuct
 	rm -r /boot/config/plugins/user.scripts/scripts/uuct
