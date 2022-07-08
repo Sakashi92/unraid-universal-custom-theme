@@ -5,7 +5,7 @@ Features: <br />
 - Easy to Use - man braucht keine html, css oder sonstige kentnisse  <br />
 - Einfacher zu verstehender Wizard <br />
 - Auto Backup und Wiederherstellung der Usereingaben bei updates <br />
-- Selbst deinstallationsfunktion um alles wieder rückgängig zu machen <br />
+- Deinstallationsfunktion um alles wieder rückgängig zu machen <br />
 
 Anleitung:<br />
 
