@@ -88,7 +88,7 @@ exit 1
 fi
 
 if [ -d /boot/config/plugins/user.scripts/scripts/uuct_installer ]; then
-	sed -i "68,70s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	echo ""
 else
 	echo 'Der Scriptname ist falsch, bitte das Script komplett neu anlegen mit dem Namen "uuct_installer"! ohne "" '
 	echo "WICHTIG DAS SCRIPT KOMPLETT NEU ANLEGEN UNTER DEM RICHTIGEN NAMEN."
@@ -105,7 +105,7 @@ fi
 
 
 if [ $first_start = "Y" ] || [ $first_start = "y" ]; then
-
+sed -i "68,70s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 if [ -d /boot/extra/ ]; then
 	echo ""
 else
