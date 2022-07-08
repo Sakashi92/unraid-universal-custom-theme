@@ -11,7 +11,7 @@ Anleitung:<br />
 
 Im unRAID-Terminal dieses Script ausführen und den Anweisungen befolgen: <br />
 
-"bash <(curl -s https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/web_installer.sh)" <br />
+" bash <(curl -s https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/web_installer.sh) " <br />
 						Die "" lasst ihr beim kopieren weg.<br />
 
 Befolgt ihr die Anweisungen sollte alles klappen ohne es genauer zu erklären. <br />
