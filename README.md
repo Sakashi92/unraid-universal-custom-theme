@@ -9,6 +9,7 @@ bash <(curl -s https://raw.githubusercontent.com/Sakashi92/unraid-universal-cust
 
 Befolgt ihr die Anweisungen sollte alles klappen ohne es genauer zu erklären. <br />
 
+Alternativ kannst du die Code Zeile auch in User.Scripts einfügen und so auch ausführen, zum abbrechen des Scripts ist oben rechts dann ein Rotes Kreuz. <br />
 <br />Folgende Vorraussetzung braucht ihr:<br />
 User.Script - muss installiert sein<br />
 Theme Engine - muss installiert sein<br />
