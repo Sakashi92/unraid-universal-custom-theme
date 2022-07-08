@@ -33,9 +33,12 @@ navbar_swap="c"
 ##########################################################################################################
 Dark_Color="0062aa"
 Light_Color="0062aa"
-Dark_Color_Title="000000"    # Hintergrundfarbe der Abschnitte für Farbverlauf *1
+Dark_Color_Title="000000"    # Hintergrundfarbe der Abschnitte für Farbverlauf *1                       ##
 Background="000000"          # Hintergrundfarbe | Background color             *2                       ##
-Text="ffffff"                # Textfarbe der kompletten Schrift | textcolor for all the text            ##
+Text="ffffff"                # Textfarbe der kompletten Schrift | textcolor for all the text *3         ##
+##########################################################################################################
+## *1 = titlecolor for column in rainbow | *2 = background color for the page                           ##
+## *3 = textcolor for complete text in unraid                                                           ##
 ##########################################################################################################
 ## RGB_Color muss in RGB angegeben werden  | rgb color go to rgb spectrum                               ##
 ## 0, 98, 170 ist blau | 0, 98, 170 is blue                                                             ##
