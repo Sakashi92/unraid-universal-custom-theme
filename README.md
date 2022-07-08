@@ -1,4 +1,4 @@
-unRAID Universal Custom Theme v0.5 <br />
+unRAID Universal Custom Theme v0.6 <br />
 Created by: Sakashi<br /><br />
 
 Features: <br />

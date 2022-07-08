@@ -7,7 +7,7 @@
 ##       ##    ##   ##    ##  ##          ##	           ## ##      ##   ## ## ##         ##          ##
 ##       ########   ########   ######     ##	      #######  ###### ##   ## ## ##         ##          ##
 ##                                                                                                      ##
-##                               unRAID Universal Custom Theme v0.5                                     ##
+##                               unRAID Universal Custom Theme v0.6                                     ##
 ##                                       Created by: Sakashi                                            ##
 ##                                                                                                      ##
 ##########################################################################################################
@@ -152,7 +152,7 @@ fi
     echo "######################################################################"
 	echo "######################################################################"
 	echo "######################################################################"
-	sleep 3
+	sleep 10
 	cd /tmp
 	wget https://github.com/Sakashi92/unraid-universal-custom-theme/archive/refs/heads/dev.zip
 	unzip dev.zip
@@ -160,14 +160,6 @@ fi
 	rm -r dev.zip
 	rm -r unraid-universal-custom-theme-dev
 	echo "Es wird nach ein vorhandenes Backup geschaut."	
-
-	echo "######################################################################"
-	echo "######################################################################"
-	echo "######################################################################"
-	echo "Du kannst jetzt zu den Einstellungen -> Theme Engine unter Saved Themes das Theme Uuct-black laden"
-	echo "Danach bearbeitest du das Script hier mit deinen Farbwerten und startest das Script neu."
-    echo "Die Farben werden in hex angegeben jedoch ohne # "
-    echo "######################################################################"
 if [ -d /boot/config/plugins/user.scripts/scripts/uuct ]; then
 	echo ""
 else
@@ -179,8 +171,18 @@ else
 	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 	cp /boot/extra/uuct/styles/uuct.css /boot/config/plugins/theme.engine/themes/uuct-black.css
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
+	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/theme.engine.cfg
 fi
-
+	echo "######################################################################"
+	echo "######################################################################"
+	echo "######################################################################"
+	echo "######################################################################"
+	echo " Es wurde ein neues Theme in der Theme engine installiert und aktiviert."
+	echo " Nicht erschrecken nachdem du das Fenster geschlossen hast"
+	echo " Einfach das Script bearbeiten mit deinen Farbwerten und dann erneut ausführen."
+	echo " Die Farben werden in hex ohne # angegeben. Die Ausnahme machen die Akzente in der Navbar."
+	echo " Die Farben in der Navbar werden in RGB angegeben. Einfach mit dem verlinkten Tool"
+	echo " die Farben umwandeln: https://www.farb-tabelle.de/de/farbtabelle.htm "
 
 
 else 

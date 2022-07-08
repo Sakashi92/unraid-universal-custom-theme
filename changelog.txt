@@ -1,5 +1,8 @@
 Changelog:
 
+unRIAD Universal Custom Theme V0.6:
+- added more easy to use feature - auto fully theme activation 
+
 unRIAD Universal Custom Theme V0.5:
 - auto backup and restore user input
 
