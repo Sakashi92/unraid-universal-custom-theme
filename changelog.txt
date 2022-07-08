@@ -1,10 +1,10 @@
 Changelog:
 
 unRIAD Universal Custom Theme V0.5:
-- auto backup and restore hex color
+- auto backup and restore user input
 
 unRIAD Universal Custom Theme V0.4:
-- added restore function
+- added color restore and script remove function
 
 
 unRIAD Universal Custom Theme < V0.3:
