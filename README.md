@@ -16,6 +16,6 @@ Theme Engine - muss installiert sein<br />
 
 Habt ihr das nicht, bitte zuerst installieren bevor ihr das Script oberhalb ausführt.
 
-Credits gehen an:
-Theme.Park - https://github.com/GilbN/theme.park
-almulder - unRAID Forum für sein sh Script das ich als Grundlage nehme.
+Credits gehen an: <br />
+Theme.Park - https://github.com/GilbN/theme.park <br />
+almulder - unRAID Forum für sein sh Script das ich als Grundlage nehme. <br />
