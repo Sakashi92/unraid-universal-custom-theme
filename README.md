@@ -1,6 +1,11 @@
 unRAID Universal Custom Theme v0.4 <br />
 Created by: Sakashi<br /><br />
 
+Features: <br />
+- Easy to Use - man braucht keine html, css oder sonstige kentnisse  <br />
+- Einfacher zu verstehender Wizard <br />
+- Auto Backup und Wiederherstellung der Usereingaben bei updates <br />
+
 Anleitung:<br />
 
 Im unRAID-Terminal dieses Script ausführen und den Anweisungen befolgen: <br />
