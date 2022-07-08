@@ -85,7 +85,6 @@ if [ $Restore_Colors = "Y" ] || [ $Restore_Colors = "y" ]; then
 	rm -r /boot/config/plugins/user.scripts/scripts/uuct
 	rm -r /boot/config/plugins/user.scripts/scripts/uuct_installer
 	echo "Alles wurde rückgängig gemacht."
-	echo "Gehe jetzt zur Theme Engine und stelle ein default Theme ein, z.b. Ashes-Black"
 exit 1
 fi
 
