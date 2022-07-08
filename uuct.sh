@@ -7,7 +7,7 @@
 ##       ##    ##   ##    ##  ##          ##	           ## ##      ##   ## ## ##         ##          ##
 ##       ########   ########   ######     ##	      #######  ###### ##   ## ## ##         ##          ##
 ##                                                                                                      ##
-##                               unRAID Universal Custom Theme v0.4                                     ##
+##                               unRAID Universal Custom Theme v0.5                                     ##
 ##                                       Created by: Sakashi                                            ##
 ##                                                                                                      ##
 ##########################################################################################################
@@ -185,7 +185,27 @@ else
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 fi
 
+
+
 else 
+
+if [ -d /boot/extra/uuct/backup ]; then
+	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
+	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
+	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Light_Color='$Light_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
+	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
+	cat /boot/extra/uuct/backup/color.cfg
+	sleep 3
+else
+	echo ""
+fi
+
 
 if ! [[ $Dark_Color =~ ^[0-9A-Fa-f]{6}$ ]] ; then
 
