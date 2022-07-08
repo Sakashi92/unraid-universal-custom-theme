@@ -15,8 +15,9 @@ Alternativ kannst du die Code Zeile auch in User.Scripts einfügen und so auch a
 User.Script - muss installiert sein<br />
 Theme Engine - muss installiert sein<br />
 
-Habt ihr das nicht, bitte zuerst installieren bevor ihr das Script oberhalb ausführt.
+Habt ihr das nicht, bitte zuerst installieren bevor ihr das Script oberhalb ausführt. <br />
 
+Ein paar Bilder für den ersteindruck findet ihr hier: https://github.com/Sakashi92/unraid-universal-custom-theme/tree/dev/screenshots <br /><br /><br />
 Credits gehen an: <br />
 Theme.Park - https://github.com/GilbN/theme.park <br />
 almulder - unRAID Forum für sein sh Script das ich als Grundlage nehme. <br />
