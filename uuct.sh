@@ -67,6 +67,7 @@ Restore_Colors='n'
 ## Script startet ab hier - nicht verändern wenn du nicht weißt was du tust #   
 #############################################################################
 first_start='y'
+activate_theme='y'
 
 if [ $Restore_Colors = "Y" ] || [ $Restore_Colors = "y" ]; then
 
@@ -110,7 +111,7 @@ else
 fi
 
 if [ $first_start = "Y" ] || [ $first_start = "y" ]; then
-sed -i "68,70s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+sed -i "69s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 
 if [ -d /boot/extra/uuct/backup ]; then
 	echo "Backup der Variablen gefunden. Wird wiederhergestellt"
@@ -123,8 +124,6 @@ if [ -d /boot/extra/uuct/backup ]; then
 	sed -i "37s/Background='000000'/$(cat /boot/extra/uuct/backup/color.cfg | head -n7 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 	sed -i "38s/Text='ffffff'/$(cat /boot/extra/uuct/backup/color.cfg | head -n8 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 	sed -i "47s/RGB_Color='0, 98, 170'/$(cat /boot/extra/uuct/backup/color.cfg | head -n9 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-#	sed -i "52s/Restore_Colors='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-#	sed -i "69s/first_start='y'/$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 	cat /boot/extra/uuct/backup/color.cfg
 	sleep 3
 else
@@ -140,8 +139,6 @@ else
 	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
-#	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
-#	echo "first_start='$first_start'" >> /boot/extra/uuct/backup/color.cfg
 fi
 
 	echo "######################################################################"
@@ -171,14 +168,12 @@ else
 	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 	cp /boot/extra/uuct/styles/uuct.css /boot/config/plugins/theme.engine/themes/uuct-black.css
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
-	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/theme.engine.cfg
 fi
 	echo "######################################################################"
 	echo "######################################################################"
 	echo "######################################################################"
 	echo "######################################################################"
-	echo " Es wurde ein neues Theme in der Theme engine installiert und aktiviert."
-	echo " Nicht erschrecken nachdem du das Fenster geschlossen hast"
+	echo " Vorbereitungen abgeschlossen."
 	echo " Einfach das Script bearbeiten mit deinen Farbwerten und dann erneut ausführen."
 	echo " Die Farben werden in hex ohne # angegeben. Die Ausnahme machen die Akzente in der Navbar."
 	echo " Die Farben in der Navbar werden in RGB angegeben. Einfach mit dem verlinkten Tool"
@@ -199,7 +194,6 @@ if [ -d /boot/extra/uuct/backup ]; then
 	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
-#	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
 	sleep 3
 else
 	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
@@ -214,8 +208,6 @@ else
 	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
-#	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
-#	echo "first_start='$first_start'" >> /boot/extra/uuct/backup/color.cfg
 fi
 
 
@@ -277,6 +269,15 @@ else
 	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 fi
 
+if [ $activate_theme = 'Y' ] || [ $activate_theme = 'y' ]; then
+	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/theme.engine.cfg
+	sed -i "70s/activated_theme='y'/activated_theme='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	else
+	echo ""
+fi
+
+
+
 cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/42ADFA/$Light_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/00378F/$Dark_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
@@ -295,10 +296,13 @@ sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Us
 sh /boot/config/plugins/user.scripts/scripts/uuct/script
 
 echo "############################################################################################################"
-echo "#   Zuletzt nur noch das Script uuct ausführen und es automatisch mit dem Array starten lassen.            #"
-echo "#   Farben kannst du mit dem Script hier bequem einstellen.                                                #"
-echo "#   Unter Einstellungen -> Anzeigeeinstellungen  kannst du noch Farben für den Header bereich einstellen   #"
-echo "#   Unter Einstellungen -> Theme Engine kannst du auch die Green Orbs anpassen in der Farbe die du willst. #"
+echo "#   Zuletzt nur noch das Script uuct automatisch mit dem Array starten lassen.                             "
+echo "#   Farben kannst du mit dem Script hier bequem einstellen.                                                "
+echo "#   Unter Einstellungen -> Anzeigeeinstellungen  kannst du noch Farben für den Header bereich einstellen   "
+echo "#   Unter Einstellungen -> Theme Engine kannst du auch die Green Orbs anpassen in der Farbe die du willst. "
+echo "#   Die Farben werden in hex ohne # angegeben. Die Ausnahme machen die Akzente in der Navbar."
+echo "#   Die Farben in der Navbar werden in RGB angegeben. Einfach mit dem verlinkten Tool"
+echo "#   die Farben umwandeln: https://www.farb-tabelle.de/de/farbtabelle.htm "
 echo "############################################################################################################"
 
 
