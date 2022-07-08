@@ -45,8 +45,6 @@ RGB_Color="0, 98, 170"
 ##########################################################################################################
 ## Hier kannst du alles rückgänig machen y = alles löschen | n = alles so lassen wie es ist             ##
 ## here can you delete the theme complete. y = for delete all foles | n = nothing                       ##
-##         WIP!! not fully workly, please reboot the server after run Restore_Colors                    ##
-##    WIP!! nicht komplett funktionsfähig, nach ausführen von Restore_Colors Server neu starten         ##
 ##########################################################################################################
 Restore_Colors="n"
 ##########################################################################################################
@@ -198,6 +196,7 @@ else
 	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 fi
 
+cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/42ADFA/$Light_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/00378F/$Dark_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/0062aa/$Light_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
