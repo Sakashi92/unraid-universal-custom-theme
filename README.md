@@ -1,6 +1,7 @@
 unRAID Universal Custom Theme v0.4
 Created by: Sakashi
 
+Um die README vernünftig lesen zu können bitte hier klicken: https://github.com/Sakashi92/unraid-universal-custom-theme/blob/dev/README.md <br />
 Anleitung:
 
 Im unRAID-Terminal dieses Script ausführen und den anweißungen befolgen: 
