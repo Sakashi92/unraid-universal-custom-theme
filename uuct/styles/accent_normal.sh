@@ -128,10 +128,10 @@ Light_Color="42ADFA"
 echo " "
 echo " "
 echo " "
-echo " "
-echo "Theme Coloring Script - v5"
-#echo " "
-#echo " "
+echo "CSS Style from Theme.Park - Thank you!"
+echo "CSS Style Modded by Sakashi for offline use"
+echo "Theme Coloring Script - v5 by almulder"
+echo "Modded by Sakashi for unRAID 6.10.x"
 
 
 
@@ -163,7 +163,6 @@ if [ "$error" = "Yes" ]; then
 	exit 1
 fi
 ######################################################################
-#####################################################################
 
 ##################################
 ## Backup/Restore Original Files #   
@@ -196,12 +195,6 @@ if [ -d "$backup_files_location2" ]; then
 else 
 	mkdir /tmp/Original_Theme_Files/CA
 fi
-
-
-
-
-
-
 
 ######################################################################
 File=UN-logotype-gradient.svg
@@ -428,15 +421,15 @@ fi
 ## Restore Original Colors? #   
 #############################
 if [ $Custom_Icon = 'Y' ] || [ $Custom_Icon = 'y' ]; then
-	echo "custom icons copied"
+	echo "Custom Icons kopiert"
 	cp /boot/extra/uuct/icons/power.png /usr/local/emhttp/plugins/dynamix.system.buttons/icons/power.png
 else 
-	echo "original icons copied"
+	echo "Original Icons wiederhergestellt"
 	cp /tmp/Original_Theme_Files/power.png /usr/local/emhttp/plugins/dynamix.system.buttons/icons/power.png
 fi
 ######################################################################
 if [ $Restore_Colors = 'Y' ] || [ $Restore_Colors = 'y' ]; then
-	echo "Original Colors Restored"
+	echo "Original Icons wiederhergestellt"
 	cp /tmp/Original_Theme_Files/power.png /usr/local/emhttp/plugins/dynamix.system.buttons/icons/power.png
 	#echo ""
 	exit 1
@@ -448,7 +441,7 @@ fi
 ## Applying Colors #   
 ####################
 ######################################################################
-echo "Applying Colors"
+echo "Wende Farben an"
 
 ###################################
 ## Defineing Variables For Colors #   
@@ -474,8 +467,6 @@ new_pass_highlight="#FFFFFF"
 new_nvida_highlight="color:#$Light_Color"
 new_comm_app_highlight="#$Light_Color"
 ######################################################################
-
-
 #######################
 ## Popup Info Section #   
 #######################
@@ -513,8 +504,6 @@ newtext="#sb-title,#sb-title-inner{border-top-left-radius:10px;border-top-right-
 sed -i "s/$oldtext/$newtext/gI" /usr/local/emhttp/webGui/styles/dynamix-black.css
 sed -i "s/$oldtext/$newtext/gI" /usr/local/emhttp/plugins/dynamix/styles/dynamix-black.css
 ##################################################################################################################################################
-
-##################################################################################################################################################
 oldtext='ui-widget-header{border:1px solid #aaa;background:#ccc url(\"..\/images\/ui-bg_highlight-soft_75_cccccc_1x100.png\") 50% 50% repeat-x;color:#222;'
 newtext='ui-widget-header{border:0px solid #aaa;background:-webkit-gradient(linear,left top,left bottom,from(#00378F),to(#42ADFA));background:linear-gradient(180deg,#00378F 0,#42ADFA);color: #e8e8e8;'
 sed -i "s/$oldtext/$newtext/gI" /usr/local/emhttp/plugins/dynamix/styles/jquery.ui.css
@@ -546,7 +535,6 @@ sed -i "s/$oldtext/$newtext/gI" /usr/local/emhttp/plugins/dynamix/styles/jquery.
 oldtext="body{font-size:1.3rem;padding:0;margin:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}"
 newtext="body{font-size:1.3rem;padding:0;margin:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#f2f2f2;background-color:#000000}"
 sed -i "s/$oldtext/$newtext/gI" /usr/local/emhttp/plugins/dynamix.docker.manager/log.htm
-
 ##################################################################################################################################################
 oldtext="body{font-size:1.3rem;color:#1c1b1b;background:#f2f2f2;"
 newtext="body{font-size:1.3rem;color:#f2f2f2;background:#1c1b1b;"
@@ -606,10 +594,10 @@ sed -i "s/$old_pass_highlight/$new_pass_highlight/gI" /usr/local/emhttp/webGui/i
 #############################
 echo " "
 echo " "
-echo "Done Applying Colors"
+echo "Alle Farben angewendet"
 echo " "
 echo " "
-echo "Script End"
+echo "Script wird beendet"
 echo " "
 echo " "
 #############################
