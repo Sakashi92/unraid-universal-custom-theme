@@ -189,6 +189,8 @@ fi
 
 else 
 
+
+
 if [ -d /boot/extra/uuct/backup ]; then
 	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
 	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
@@ -200,7 +202,6 @@ if [ -d /boot/extra/uuct/backup ]; then
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
-	cat /boot/extra/uuct/backup/color.cfg
 	sleep 3
 else
 	echo ""
