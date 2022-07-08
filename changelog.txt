@@ -1,9 +1,12 @@
 Changelog:
 
+unRIAD Universal Custom Theme V0.5:
+- auto backup and restore hex color
+
 unRIAD Universal Custom Theme V0.4:
-added restore function
+- added restore function
 
 
 unRIAD Universal Custom Theme < V0.3:
 
-Alpha stadium and several changes and fixes
+- Alpha stadium and several changes and fixes
