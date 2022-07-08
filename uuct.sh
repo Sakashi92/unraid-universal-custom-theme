@@ -103,19 +103,15 @@ else
 	mkdir /boot/extra
 fi
 
-
-if [ $first_start = "Y" ] || [ $first_start = "y" ]; then
-sed -i "68,70s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-if [ -d /boot/extra/ ]; then
-	echo ""
-else
-	mkdir /boot/extra
-fi
 if [ -d /boot/extra/uuct ]; then
 	echo
 else
 	mkdir /boot/extra/uuct
 fi
+
+if [ $first_start = "Y" ] || [ $first_start = "y" ]; then
+sed -i "68,70s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+
 if [ -d /boot/extra/uuct/backup ]; then
 	echo "Backup der Variablen gefunden. Wird wiederhergestellt"
 	sed -i "21s/Black_Login='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n1 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
@@ -204,7 +200,20 @@ if [ -d /boot/extra/uuct/backup ]; then
 	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
 	sleep 3
 else
-	echo ""
+	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
+	mkdir /boot/extra/uuct/backup
+	touch /boot/extra/uuct/backup/color.cfg
+	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
+	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
+	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Light_Color='$Light_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
+	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
+	echo "first_start='$first_start'" >> /boot/extra/uuct/backup/color.cfg
 fi
 
 
@@ -223,25 +232,6 @@ if ! [[ $Background =~ ^[0-9A-Fa-f]{6}$ ]] ; then
 	echo "Background - Invalid Hex Code"
 	echo " "
 	error="Yes"
-fi
-
-if [ -d /boot/extra/uuct/backup ]; then
-	echo ""
-else
-	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
-	mkdir /boot/extra/uuct/backup
-	touch /boot/extra/uuct/backup/color.cfg
-	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
-	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
-	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Light_Color='$Light_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
-	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Restore_Colors='$Restore_Colors'" >> /boot/extra/uuct/backup/color.cfg
-	echo "first_start='$first_start'" >> /boot/extra/uuct/backup/color.cfg
 fi
 
 	echo "CSS und sh script mit den Farben wird erstellt."
