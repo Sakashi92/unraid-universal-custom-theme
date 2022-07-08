@@ -1,8 +1,8 @@
 #!/bin/sh
 echo "#############################################################################################"
-echo "Bei einem Update gehen alle selbstgemachte einstellungen verloren,"
-echo "sichere vorher deine Hexwerte seperat um die Farben wiederherzustellen"
-echo "Du hast 10 sec zeit das Script mit strg + c abzubrechen!"
+echo "Bei einem Update gehen alle selbstgemachten Einstellungen verloren,"
+echo "sichere vorher deine hexwerte seperat um die Farben wiederherzustellen"
+echo "Du hast 10 sec Zeit das Script mit strg + c abzubrechen!"
 echo "#############################################################################################"
 sleep 1
 echo "10..."
