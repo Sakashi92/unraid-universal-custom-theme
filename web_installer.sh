@@ -7,16 +7,8 @@ echo "Sichere vorher deine hexwerte seperat um die Farben wiederherzustellen"
 echo "Dies gilt nur ab einer Script Version von 0.5. Alles darunter unterstützt kein Backup."
 echo "Du hast 10 sec Zeit das Script mit strg + c abzubrechen!"
 echo "#############################################################################################"
-sleep 1
+sleep 5
 echo "10..."
-sleep 1
-echo "9..."
-sleep 1
-echo "8..."
-sleep 1
-echo "7..."
-sleep 1
-echo "6..."
 sleep 1
 echo "5..."
 sleep 1
