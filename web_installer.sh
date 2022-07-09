@@ -48,6 +48,7 @@ echo "uuct_installer" > /boot/config/plugins/user.scripts/scripts/uuct_installer
 echo "#############################################################################################"
 echo "Führe bitte jetzt das Script uuct_installer in den user.scripts über die Weboberfläche aus."
 echo "#############################################################################################"
+						break
                         ;;
                 "english")
 echo "#############################################################################################"
@@ -78,6 +79,7 @@ sed -i "72s/language='de'/language='en'/gI" /boot/config/plugins/user.scripts/sc
 echo "#############################################################################################"
 echo "Now please run the uuct_installer script in the user.scripts via the web interface."
 echo "#############################################################################################"
+						break
                         ;;
                 "beenden / exit")
                         break
