@@ -34,7 +34,7 @@ almulder - unRAID Forum für sein sh Script das ich als Grundlage nehme. <br /><
 
 ENGLISH VERSION: <br /> <br />
 
-unRAID Universal Custom Theme v0.6 <br />
+unRAID Universal Custom Theme v0.7 <br />
 Created by: Sakashi<br /><br />
 
 Features: <br />
