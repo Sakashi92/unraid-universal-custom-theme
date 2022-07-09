@@ -13,8 +13,8 @@ echo "Welche Sprache sprichst du? - Bitte auswählen."
 echo "#############################################################################"
 echo "Welcome to the installer and updater from unRAID Universal Custom Theme."
 echo "What is your language? - Please choose."
-echo " 1 für Deutsch und enter drücken"
-echo " 2 for english and press enter"
+echo " wählen und enter drücken"
+echo " choose and press enter"
 menu=''
 options=("Deutsch" "english" "beenden / exit")
 select opt in "${options[@]}"
