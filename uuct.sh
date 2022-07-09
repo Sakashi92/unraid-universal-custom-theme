@@ -376,7 +376,7 @@ else
 	echo "#   You can easily set colors with the script here.                                                "
 	echo "#   Under Settings -> Display settings you can set colors for the header area   "
 	echo "#   Under Settings -> Theme Engine you can also customize the Green Orbs to the color you want. "
-	echo "#   DThe colors are given in hex without #. The exception are the accents in the navbar."
+	echo "#   The colors are given in hex without #. The exception are the accents in the navbar."
 	echo "#   The colors in the navbar are specified in RGB. Simply with the linked tool"
 	echo "#   convert the colors: https://www.farb-tabelle.de/de/farbtabelle.htm "
 fi
