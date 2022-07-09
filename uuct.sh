@@ -47,7 +47,7 @@ Text='ffffff'                # Textfarbe der kompletten Schrift | textcolor for 
 RGB_Color='0, 98, 170'
 ##########################################################################################################
 ## Hier kannst du alles rückgänig machen y = alles löschen | n = alles so lassen wie es ist             ##
-## here can you delete the theme complete. y = for delete all foles | n = nothing                       ##
+## here can you delete the theme complete. y = for delete all files | n = nothing                       ##
 ##########################################################################################################
 Restore_Colors='n'
 ##########################################################################################################
