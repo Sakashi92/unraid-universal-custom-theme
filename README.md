@@ -1,5 +1,5 @@
-GERMAN VERSION: <br /> <br />
-
+GERMAN VERSION: <br />
+ENGLISH VERSION IS BELOW! <br /><br />
 unRAID Universal Custom Theme v0.6 <br />
 Created by: Sakashi<br /><br />
 
@@ -27,7 +27,7 @@ Habt ihr das nicht, bitte zuerst installieren bevor ihr das Script oberhalb ausf
 Ein paar Bilder für den ersteindruck findet ihr hier: https://github.com/Sakashi92/unraid-universal-custom-theme/tree/dev/screenshots <br /><br /><br />
 Credits gehen an: <br />
 Theme.Park - https://github.com/GilbN/theme.park <br />
-almulder - unRAID Forum für sein sh Script das ich als Grundlage nehme. <br />
+almulder - unRAID Forum für sein sh Script das ich als Grundlage nehme. <br /><br /><br /><br />
 
 
 ENGLISH VERSION: <br /> <br />
