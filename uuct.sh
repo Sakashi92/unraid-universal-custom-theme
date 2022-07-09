@@ -85,16 +85,15 @@ else
 	echo "The complete theme is in reseting"
 	echo "all Theme data will delete"
 fi
-	sed -i 's/Restore_Colors="n"/Restore_Colors="y"/gI' /boot/config/plugins/user.scripts/scripts/uuct/script
+	sed -i 's/Restore_Colors="n"/Restore_Colors="y"/gI' /boot/extra/uuct/change/uuct.sh
 	sleep 1
-	sh /boot/config/plugins/user.scripts/scripts/uuct/script
-	cp /boot/extra/uuct/ca/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+	sh /boot/extra/uuct/change/uuct.sh
+	cp /boot/extra/uuct/backup/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 	rm -r /boot/config/plugins/theme.engine/theme.engine.cfg
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.css
 	rm -r /boot/extra/uuct
-	rm -r /boot/config/plugins/user.scripts/scripts/uuct
-	rm -r /boot/config/plugins/user.scripts/scripts/uuct_installer
+	rm -r /boot/config/plugins/user.scripts/scripts/uuct_helper
 	
 if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "Alles wurde rückgängig gemacht."
@@ -105,14 +104,14 @@ exit 1
 
 fi
 
-if [ -d /boot/config/plugins/user.scripts/scripts/uuct_installer ]; then
+if [ -d /boot/config/plugins/user.scripts/scripts/uuct_helper ]; then
 	echo ""
 else
 if [ $language = 'de' ] || [ $language = 'de' ]; then
-	echo 'Der Scriptname ist falsch, bitte das Script komplett neu anlegen mit dem Namen "uuct_installer"! ohne "" '
+	echo 'Der Scriptname ist falsch, bitte das Script komplett neu anlegen mit dem Namen "uuct_helper"! ohne "" '
 	echo "WICHTIG DAS SCRIPT KOMPLETT NEU ANLEGEN UNTER DEM RICHTIGEN NAMEN."
 else
-	echo 'The script name is wrong, please create the script from scratch with the name "uuct_installer"! without ""'
+	echo 'The script name is wrong, please create the script from scratch with the name "uuct_helper"! without ""'
 	echo "IMPORTANT CREATE THE SCRIPT COMPLETELY NEW UNDER THE CORRECT NAME."
 fi
 	exit 1
@@ -137,7 +136,7 @@ else
 fi
 
 if [ $first_start = 'Y' ] || [ $first_start = 'y' ]; then
-sed -i "75s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+sed -i "75s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 
 if [ -d /boot/extra/uuct/backup ]; then
 if [ $language = 'de' ] || [ $language = 'de' ]; then
@@ -145,15 +144,15 @@ if [ $language = 'de' ] || [ $language = 'de' ]; then
 else
 	echo "Backup of variables found. Will be restored"
 fi
-	sed -i "21s/Black_Login='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n1 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	sed -i "22s/Custom_Icon='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n2 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	sed -i "27s/navbar_swap='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n3 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	sed -i "34s/Dark_Color='0062aa'/$(cat /boot/extra/uuct/backup/color.cfg | head -n4 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	sed -i "35s/Light_Color='0062aa'/$(cat /boot/extra/uuct/backup/color.cfg | head -n5 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	sed -i "36s/Dark_Color_Title='000000'/$(cat /boot/extra/uuct/backup/color.cfg | head -n6 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	sed -i "37s/Background='000000'/$(cat /boot/extra/uuct/backup/color.cfg | head -n7 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	sed -i "38s/Text='ffffff'/$(cat /boot/extra/uuct/backup/color.cfg | head -n8 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	sed -i "47s/RGB_Color='0, 98, 170'/$(cat /boot/extra/uuct/backup/color.cfg | head -n9 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "21s/Black_Login='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n1 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+	sed -i "22s/Custom_Icon='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n2 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+	sed -i "27s/navbar_swap='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n3 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+	sed -i "34s/Dark_Color='0062aa'/$(cat /boot/extra/uuct/backup/color.cfg | head -n4 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+	sed -i "35s/Light_Color='0062aa'/$(cat /boot/extra/uuct/backup/color.cfg | head -n5 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+	sed -i "36s/Dark_Color_Title='000000'/$(cat /boot/extra/uuct/backup/color.cfg | head -n6 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+	sed -i "37s/Background='000000'/$(cat /boot/extra/uuct/backup/color.cfg | head -n7 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+	sed -i "38s/Text='ffffff'/$(cat /boot/extra/uuct/backup/color.cfg | head -n8 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+	sed -i "47s/RGB_Color='0, 98, 170'/$(cat /boot/extra/uuct/backup/color.cfg | head -n9 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	cat /boot/extra/uuct/backup/color.cfg
 	sleep 3
 else
@@ -164,6 +163,7 @@ else
 fi
 	mkdir /boot/extra/uuct/backup
 	touch /boot/extra/uuct/backup/color.cfg
+	cp /usr/local/emhttp/plugins/user.scripts/Userscripts.page /boot/extra/uuct/backup/Userscripts.page
 	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
 	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
 	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
@@ -204,23 +204,17 @@ if [ $language = 'de' ] || [ $language = 'de' ]; then
 else
 	echo "An existing backup is checked."
 fi
-
-if [ -d /boot/config/plugins/user.scripts/scripts/uuct ]; then
-	echo ""
+if [ -d /boot/extra/uuct/change ]; then
+	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/extra/uuct/change/uuct.sh
+	cp /boot/extra/uuct/styles/uuct.css /boot/config/plugins/theme.engine/themes/uuct-black.css
+	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 else
-if [ $language = 'de' ] || [ $language = 'de' ]; then
-	echo "Der Ordner /boot/config/plugins/user.scripts/scripts/uuct kann nicht gefunden werden. Wird erstellt..."
-else
-	echo "the folder /boot/config/plugins/user.scripts/scripts/uuct cannot found. is created..."
-fi
-	mkdir /boot/config/plugins/user.scripts/scripts/uuct
-	touch /boot/config/plugins/user.scripts/scripts/uuct/name
-	touch /boot/config/plugins/user.scripts/scripts/uuct/script
-	echo "uuct" > /boot/config/plugins/user.scripts/scripts/uuct/name
-	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
+	mkdir /boot/extra/uuct/change
+	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/extra/uuct/change/uuct.sh
 	cp /boot/extra/uuct/styles/uuct.css /boot/config/plugins/theme.engine/themes/uuct-black.css
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 fi
+
 	echo "######################################################################"
 	echo "######################################################################"
 	echo "######################################################################"
@@ -257,20 +251,8 @@ else
 if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
 else
-	echo "There is no backup. Backup is created."
+	echo ""
 fi
-	mkdir /boot/extra/uuct/backup
-	touch /boot/extra/uuct/backup/color.cfg
-	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
-	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
-	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Light_Color='$Light_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
-	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
 fi
 
 
@@ -326,45 +308,42 @@ if [ $Custom_Icon = 'Y' ] || [ $Custom_Icon = 'y' ]; then
 	sed -i 's/Custom_Icon="y"/Custom_Icon="n"/gI' /boot/extra/uuct/styles/accent_normal.sh
 fi
 
-if [ -d /boot/config/plugins/user.scripts/scripts/uuct ]; then
+if [ -d /boot/extra/uuct/change ]; then
 	echo ""
 else
-	mkdir /boot/config/plugins/user.scripts/scripts/uuct
-	touch /boot/config/plugins/user.scripts/scripts/uuct/name
-	touch /boot/config/plugins/user.scripts/scripts/uuct/script
-	echo "uuct" > /boot/config/plugins/user.scripts/scripts/uuct/name
-	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
+	mkdir /boot/extra/uuct/change/uuct.sh
+	cp /boot/extra/uuct/styles/accent_normal.sh /boot/extra/uuct/change/uuct.sh
 fi
 
 if [ $activate_theme = 'Y' ] || [ $activate_theme = 'y' ]; then
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/theme.engine.cfg
-	sed -i "76s/activate_theme='y'/activate_theme='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "76s/activate_theme='y'/activate_theme='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	else
 	echo ""
 fi
 
 
 
-cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
-sed -i "s/42ADFA/$Light_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
-sed -i "s/00378F/$Dark_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
-sed -i "s/0062aa/$Light_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
-sed -i "s/030303/$Dark_Color_Title/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
-sed -i "s/000000/$Background/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
-sed -i "s/0062ab/$Dark_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
-sed -i "s/ffffff/$Text/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
-sed -i "s/00ddfe/$Dark_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
-sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
+cat /boot/extra/uuct/styles/accent_normal.sh > /boot/extra/uuct/change/uuct.sh
+sed -i "s/42ADFA/$Light_Color/gI" /boot/extra/uuct/change/uuct.sh
+sed -i "s/00378F/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
+sed -i "s/0062aa/$Light_Color/gI" /boot/extra/uuct/change/uuct.sh
+sed -i "s/030303/$Dark_Color_Title/gI" /boot/extra/uuct/change/uuct.sh
+sed -i "s/000000/$Background/gI" /boot/extra/uuct/change/uuct.sh
+sed -i "s/0062ab/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
+sed -i "s/ffffff/$Text/gI" /boot/extra/uuct/change/uuct.sh
+sed -i "s/00ddfe/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
+sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/extra/uuct/change/uuct.sh
 
 new_light_color="#$Light_Color"
 cp /boot/extra/uuct/ca/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 
-sh /boot/config/plugins/user.scripts/scripts/uuct/script
+sh /boot/extra/uuct/change/uuct.sh
 
 echo "############################################################################################################"
 if [ $language = 'de' ] || [ $language = 'de' ]; then
-	echo "#   Zuletzt nur noch das Script uuct automatisch mit dem Array starten lassen.                             "
+	echo "#   Zuletzt nur noch das Script uuct_helper automatisch mit dem Array starten lassen.                             "
 	echo "#   Farben kannst du mit dem Script hier bequem einstellen.                                                "
 	echo "#   Unter Einstellungen -> Anzeigeeinstellungen  kannst du noch Farben für den Header bereich einstellen   "
 	echo "#   Unter Einstellungen -> Theme Engine kannst du auch die Green Orbs anpassen in der Farbe die du willst. "
@@ -372,7 +351,7 @@ if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "#   Die Farben in der Navbar werden in RGB angegeben. Einfach mit dem verlinkten Tool"
 	echo "#   die Farben umwandeln: https://www.farb-tabelle.de/de/farbtabelle.htm "
 else
-	echo "#   Finally, let the uuct script start automatically with the array.                             "
+	echo "#   Finally, let the uuct_helper script start automatically with the array.                             "
 	echo "#   You can easily set colors with the script here.                                                "
 	echo "#   Under Settings -> Display settings you can set colors for the header area   "
 	echo "#   Under Settings -> Theme Engine you can also customize the Green Orbs to the color you want. "

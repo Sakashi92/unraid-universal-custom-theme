@@ -39,18 +39,12 @@ echo "##########################################################################
 echo "Daten werden nun heruntergeladen und vorhandene überschrieben"
 echo "#############################################################################################"
 sleep 1
-if [ -d /boot/config/plugins/user.scripts/scripts/uuct_installer ]; then
-	rm -r /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	wget -P /boot/config/plugins/user.scripts/scripts/uuct_installer https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/uuct.sh
-	mv /boot/config/plugins/user.scripts/scripts/uuct_installer/uuct.sh /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-else
-wget -P /boot/config/plugins/user.scripts/scripts/uuct_installer https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/uuct.sh
-mv /boot/config/plugins/user.scripts/scripts/uuct_installer/uuct.sh /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-touch /boot/config/plugins/user.scripts/scripts/uuct_installer/name
-echo "uuct_installer" > /boot/config/plugins/user.scripts/scripts/uuct_installer/name
-fi
+wget -P /boot/config/plugins/user.scripts/scripts/uuct_helper https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/uuct.sh
+mv /boot/config/plugins/user.scripts/scripts/uuct_helper/uuct.sh /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+touch /boot/config/plugins/user.scripts/scripts/uuct_helper/name
+echo "uuct_helper" > /boot/config/plugins/user.scripts/scripts/uuct_helper/name
 echo "#############################################################################################"
-echo "Führe bitte jetzt das Script uuct_installer in den user.scripts über die Weboberfläche aus."
+echo "Führe bitte jetzt das Script uuct_helper in den user.scripts über die Weboberfläche aus."
 echo "#############################################################################################"
 						break
                         ;;
@@ -75,19 +69,13 @@ echo "##########################################################################
 echo "Data will now be downloaded and existing ones will be overwritten"
 echo "#############################################################################################"
 sleep 1
-if [ -d /boot/config/plugins/user.scripts/scripts/uuct_installer ]; then
-	rm -r /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-	wget -P /boot/config/plugins/user.scripts/scripts/uuct_installer https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/uuct.sh
-	mv /boot/config/plugins/user.scripts/scripts/uuct_installer/uuct.sh /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-else
-wget -P /boot/config/plugins/user.scripts/scripts/uuct_installer https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/uuct.sh
-mv /boot/config/plugins/user.scripts/scripts/uuct_installer/uuct.sh /boot/config/plugins/user.scripts/scripts/uuct_installer/script
-touch /boot/config/plugins/user.scripts/scripts/uuct_installer/name
-echo "uuct_installer" > /boot/config/plugins/user.scripts/scripts/uuct_installer/name
-fi
-sed -i "72s/language='de'/language='en'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+wget -P /boot/config/plugins/user.scripts/scripts/uuct_helper https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/uuct.sh
+mv /boot/config/plugins/user.scripts/scripts/uuct_helper/uuct.sh /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+touch /boot/config/plugins/user.scripts/scripts/uuct_helper/name
+echo "uuct_helper" > /boot/config/plugins/user.scripts/scripts/uuct_helper/name
+sed -i "72s/language='de'/language='en'/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 echo "#############################################################################################"
-echo "Now please run the uuct_installer script in the user.scripts via the web interface."
+echo "Now please run the uuct_helper script in the user.scripts via the web interface."
 echo "#############################################################################################"
 						break
                         ;;
