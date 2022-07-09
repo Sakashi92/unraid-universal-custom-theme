@@ -7,7 +7,7 @@
 ##       ##    ##   ##    ##  ##          ##	           ## ##      ##   ## ## ##         ##          ##
 ##       ########   ########   ######     ##	      #######  ###### ##   ## ## ##         ##          ##
 ##                                                                                                      ##
-##                               unRAID Universal Custom Theme v0.6                                     ##
+##                               unRAID Universal Custom Theme v0.7                                     ##
 ##                                       Created by: Sakashi                                            ##
 ##                                                                                                      ##
 ##########################################################################################################
@@ -66,14 +66,25 @@ Restore_Colors='n'
 #############################################################################
 ## Script startet ab hier - nicht verändern wenn du nicht weißt was du tust #   
 #############################################################################
+#############################################################################
+##Deine Sprache de oder en | your language de or en
+#############################################################################
+language='de'
+#############################################################################
+installed_version='0.7'
 first_start='y'
 activate_theme='y'
 
-if [ $Restore_Colors = "Y" ] || [ $Restore_Colors = "y" ]; then
+if [ $Restore_Colors = 'Y' ] || [ $Restore_Colors = 'y' ]; then
 
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "Das komplette Theme wird rückgängig gemacht."
 	echo "Dabei werden auch alle heruntergeladene"
 	echo "und erstellte Dateien gelöscht"
+else
+	echo "The complete theme is in reseting"
+	echo "all Theme data will delete"
+fi
 	sed -i 's/Restore_Colors="n"/Restore_Colors="y"/gI' /boot/config/plugins/user.scripts/scripts/uuct/script
 	sleep 1
 	sh /boot/config/plugins/user.scripts/scripts/uuct/script
@@ -84,15 +95,26 @@ if [ $Restore_Colors = "Y" ] || [ $Restore_Colors = "y" ]; then
 	rm -r /boot/extra/uuct
 	rm -r /boot/config/plugins/user.scripts/scripts/uuct
 	rm -r /boot/config/plugins/user.scripts/scripts/uuct_installer
+	
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "Alles wurde rückgängig gemacht."
+else
+	echo "Everything has been undone."
+fi
 exit 1
+
 fi
 
 if [ -d /boot/config/plugins/user.scripts/scripts/uuct_installer ]; then
 	echo ""
 else
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo 'Der Scriptname ist falsch, bitte das Script komplett neu anlegen mit dem Namen "uuct_installer"! ohne "" '
 	echo "WICHTIG DAS SCRIPT KOMPLETT NEU ANLEGEN UNTER DEM RICHTIGEN NAMEN."
+else
+	echo 'The script name is wrong, please create the script from scratch with the name "uuct_installer"! without ""'
+	echo "IMPORTANT CREATE THE SCRIPT COMPLETELY NEW UNDER THE CORRECT NAME."
+fi
 	exit 1
 fi
 
@@ -100,7 +122,11 @@ fi
 if [ -d /boot/extra ]; then
 	echo ""
 else
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "Der Ordner /extra in /boot kann nicht gefunden werden. Wird erstellt..."
+else
+	echo "The /extra folder in /boot cannot be found. Creating..."
+fi
 	mkdir /boot/extra
 fi
 
@@ -110,11 +136,15 @@ else
 	mkdir /boot/extra/uuct
 fi
 
-if [ $first_start = "Y" ] || [ $first_start = "y" ]; then
-sed -i "69s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+if [ $first_start = 'Y' ] || [ $first_start = 'y' ]; then
+sed -i "75s/first_start='y'/first_start='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 
 if [ -d /boot/extra/uuct/backup ]; then
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "Backup der Variablen gefunden. Wird wiederhergestellt"
+else
+	echo "Backup of variables found. Will be restored"
+fi
 	sed -i "21s/Black_Login='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n1 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 	sed -i "22s/Custom_Icon='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n2 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 	sed -i "27s/navbar_swap='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n3 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
@@ -127,7 +157,11 @@ if [ -d /boot/extra/uuct/backup ]; then
 	cat /boot/extra/uuct/backup/color.cfg
 	sleep 3
 else
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
+else
+	echo "There is no backup. Backup is created."
+fi
 	mkdir /boot/extra/uuct/backup
 	touch /boot/extra/uuct/backup/color.cfg
 	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
@@ -139,13 +173,22 @@ else
 	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
 fi
 
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "######################################################################"
 	echo "Willkommen im unRAID Universal Custom Theme installer."
 	echo "Da du den installer das erste mal startest werden einige Daten von github heruntergeladen."
 	echo "Github: https://github.com/Sakashi92/unraid-universal-custom-theme/"
 	echo "Die Daten werden in /boot/extra/uuct abgelegt und sind für das Theme notwendig."
+else
+	echo "######################################################################"
+	echo "Welcome to the unRAID Universal Custom Theme installer."
+	echo "Since you are starting the installer for the first time, some data will be downloaded from github."
+	echo "Github: https://github.com/Sakashi92/unraid-universal-custom-theme/"
+	echo "The data is stored in /boot/extra/uuct and is necessary for the theme."
+fi
     echo "######################################################################"
 	echo "######################################################################"
 	echo "######################################################################"
@@ -156,11 +199,20 @@ fi
 	cp -r /tmp/unraid-universal-custom-theme-dev/uuct /boot/extra/
 	rm -r dev.zip
 	rm -r unraid-universal-custom-theme-dev
-	echo "Es wird nach ein vorhandenes Backup geschaut."	
+if [ $language = 'de' ] || [ $language = 'de' ]; then
+	echo "Es wird nach ein vorhandenes Backup geschaut."
+else
+	echo "An existing backup is checked."
+fi
+
 if [ -d /boot/config/plugins/user.scripts/scripts/uuct ]; then
 	echo ""
 else
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "Der Ordner /boot/config/plugins/user.scripts/scripts/uuct kann nicht gefunden werden. Wird erstellt..."
+else
+	echo "the folder /boot/config/plugins/user.scripts/scripts/uuct cannot found. is created..."
+fi
 	mkdir /boot/config/plugins/user.scripts/scripts/uuct
 	touch /boot/config/plugins/user.scripts/scripts/uuct/name
 	touch /boot/config/plugins/user.scripts/scripts/uuct/script
@@ -173,16 +225,21 @@ fi
 	echo "######################################################################"
 	echo "######################################################################"
 	echo "######################################################################"
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo " Vorbereitungen abgeschlossen."
 	echo " Einfach das Script bearbeiten mit deinen Farbwerten und dann erneut ausführen."
 	echo " Die Farben werden in hex ohne # angegeben. Die Ausnahme machen die Akzente in der Navbar."
 	echo " Die Farben in der Navbar werden in RGB angegeben. Einfach mit dem verlinkten Tool"
 	echo " die Farben umwandeln: https://www.farb-tabelle.de/de/farbtabelle.htm "
-
+else
+	echo " preparations complete."
+	echo " Just edit the script with your color values ​​and then run it again."
+	echo " The colors are given in hex without #. The exception are the accents in the navbar."
+	echo " The colors in the navbar are specified in RGB. Simply with the linked tool"
+	echo " convert the colors: https://www.farb-tabelle.de/de/farbtabelle.htm "
+fi
 
 else 
-
-
 
 if [ -d /boot/extra/uuct/backup ]; then
 	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
@@ -194,9 +251,14 @@ if [ -d /boot/extra/uuct/backup ]; then
 	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
 	sleep 3
 else
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
+else
+	echo "There is no backup. Backup is created."
+fi
 	mkdir /boot/extra/uuct/backup
 	touch /boot/extra/uuct/backup/color.cfg
 	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
@@ -208,6 +270,7 @@ else
 	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
 fi
 
 
@@ -228,7 +291,11 @@ if ! [[ $Background =~ ^[0-9A-Fa-f]{6}$ ]] ; then
 	error="Yes"
 fi
 
+if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "CSS und sh script mit den Farben wird erstellt."
+else
+	echo "CSS and sh script with the colors is created."
+fi
 	if [ $navbar_swap = 'N' ] || [ $navbar_swap = 'n' ]; then
 	cat /boot/extra/uuct/styles/uuct.css > /boot/config/plugins/theme.engine/themes/uuct-black.css
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
@@ -271,7 +338,7 @@ fi
 
 if [ $activate_theme = 'Y' ] || [ $activate_theme = 'y' ]; then
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/theme.engine.cfg
-	sed -i "70s/activated_theme='y'/activated_theme='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
+	sed -i "76s/activate_theme='y'/activate_theme='n'/gI" /boot/config/plugins/user.scripts/scripts/uuct_installer/script
 	else
 	echo ""
 fi
@@ -296,14 +363,22 @@ sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Us
 sh /boot/config/plugins/user.scripts/scripts/uuct/script
 
 echo "############################################################################################################"
-echo "#   Zuletzt nur noch das Script uuct automatisch mit dem Array starten lassen.                             "
-echo "#   Farben kannst du mit dem Script hier bequem einstellen.                                                "
-echo "#   Unter Einstellungen -> Anzeigeeinstellungen  kannst du noch Farben für den Header bereich einstellen   "
-echo "#   Unter Einstellungen -> Theme Engine kannst du auch die Green Orbs anpassen in der Farbe die du willst. "
-echo "#   Die Farben werden in hex ohne # angegeben. Die Ausnahme machen die Akzente in der Navbar."
-echo "#   Die Farben in der Navbar werden in RGB angegeben. Einfach mit dem verlinkten Tool"
-echo "#   die Farben umwandeln: https://www.farb-tabelle.de/de/farbtabelle.htm "
+if [ $language = 'de' ] || [ $language = 'de' ]; then
+	echo "#   Zuletzt nur noch das Script uuct automatisch mit dem Array starten lassen.                             "
+	echo "#   Farben kannst du mit dem Script hier bequem einstellen.                                                "
+	echo "#   Unter Einstellungen -> Anzeigeeinstellungen  kannst du noch Farben für den Header bereich einstellen   "
+	echo "#   Unter Einstellungen -> Theme Engine kannst du auch die Green Orbs anpassen in der Farbe die du willst. "
+	echo "#   Die Farben werden in hex ohne # angegeben. Die Ausnahme machen die Akzente in der Navbar."
+	echo "#   Die Farben in der Navbar werden in RGB angegeben. Einfach mit dem verlinkten Tool"
+	echo "#   die Farben umwandeln: https://www.farb-tabelle.de/de/farbtabelle.htm "
+else
+	echo "#   Finally, let the uuct script start automatically with the array.                             "
+	echo "#   You can easily set colors with the script here.                                                "
+	echo "#   Under Settings -> Display settings you can set colors for the header area   "
+	echo "#   Under Settings -> Theme Engine you can also customize the Green Orbs to the color you want. "
+	echo "#   DThe colors are given in hex without #. The exception are the accents in the navbar."
+	echo "#   The colors in the navbar are specified in RGB. Simply with the linked tool"
+	echo "#   convert the colors: https://www.farb-tabelle.de/de/farbtabelle.htm "
+fi
 echo "############################################################################################################"
-
-
 fi

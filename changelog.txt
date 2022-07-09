@@ -1,4 +1,8 @@
 Changelog:
+unRIAD Universal Custom Theme V0.7:
+- added eng translation
+- added menu for the installer
+- added versions checker
 
 unRIAD Universal Custom Theme V0.6:
 - added more easy to use feature - auto fully theme activation 
