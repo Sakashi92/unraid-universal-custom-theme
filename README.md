@@ -1,6 +1,6 @@
 GERMAN VERSION: <br />
 ENGLISH VERSION IS BELOW! <br /><br />
-unRAID Universal Custom Theme v0.6 <br />
+unRAID Universal Custom Theme v0.7 <br />
 Created by: Sakashi<br /><br />
 
 Features: <br />
