@@ -9,12 +9,10 @@ echo -e "\nKeine Version installiert. / not installed version"
 fi
 echo "######################################################"
 echo -e "\nWillkommen beim installer und Updater vom unRAID Universal Custom Theme."
-echo "Welche Sprache sprichst du? - Bitte auswählen."
+echo "Welche Sprache sprichst du? - Bitte auswählen und enter drücken."
 echo "#############################################################################"
 echo "Welcome to the installer and updater from unRAID Universal Custom Theme."
-echo "What is your language? - Please choose."
-echo " wählen und enter drücken"
-echo " choose and press enter"
+echo "What is your language? - Please choose and press enter."
 menu=''
 options=("Deutsch" "english" "beenden / exit")
 select opt in "${options[@]}"
