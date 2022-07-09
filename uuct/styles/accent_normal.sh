@@ -12,7 +12,7 @@
 ##                                       ## ##      ##   ## ## ##         ##                                         #
 ##                                  #######  ###### ##   ## ## ##         ##                                         #
 ##                                                                                                          v5       #
-##                                       Created by: almulder                                                        #
+##                                       Created by: almulder Modded by Sakashi                                      #
 ##                                                                                                                   #
 ##      This script will replace the default unraid theme colors (orange) to the colors of your choice. This is      #
 ## meant to change as many areas as possible. There are only a few colors you need to select, inorder to change      #
