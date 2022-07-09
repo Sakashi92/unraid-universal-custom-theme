@@ -1,11 +1,11 @@
 #!/bin/sh
-installed_version="$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)"
 echo "######################################################"
 curl -s https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/cfg/version.cfg
 if [ -d /boot/extra/uuct/backup ]; then
+installed_version="$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)"
 echo -e "\nInstallierte / installed Version: $installed_version"
 else
-echo -e "\nKeine Version installiert. / not installed version"
+echo -e "\nKeine Version installiert / not installed version"
 fi
 echo "######################################################"
 echo -e "\nWillkommen beim installer und Updater vom unRAID Universal Custom Theme."
