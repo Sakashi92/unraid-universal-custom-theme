@@ -336,7 +336,7 @@ sed -i "s/00ddfe/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
 sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/extra/uuct/change/uuct.sh
 
 new_light_color="#$Light_Color"
-cp /boot/extra/uuct/ca/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+cp /boot/extra/uuct/backup/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 
 sh /boot/extra/uuct/change/uuct.sh
