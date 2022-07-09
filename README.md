@@ -8,6 +8,7 @@ Features: <br />
 - Einfacher zu verstehender Wizard <br />
 - Auto Backup und Wiederherstellung der Usereingaben bei Updates <br />
 - Deinstallationsfunktion um alles wieder rückgängig zu machen <br />
+- Mehrsprachig Deutsch und English <br />
 
 Anleitung:<br />
 
@@ -40,6 +41,7 @@ Features: <br />
 - Easy to understand wizard <br />
 - Auto backup and restore of user input during updates <br />
 - Uninstall function to undo everything <br />
+- Multilanguage german and english <br />
 
 Instructions:<br />
 
