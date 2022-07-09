@@ -7,7 +7,7 @@
 ##       ##    ##   ##    ##  ##          ##	           ## ##      ##   ## ## ##         ##          ##
 ##       ########   ########   ######     ##	      #######  ###### ##   ## ## ##         ##          ##
 ##                                                                                                      ##
-##                               unRAID Universal Custom Theme v0.7.1                                   ##
+##                               unRAID Universal Custom Theme v0.7.2                                   ##
 ##                                       Created by: Sakashi                                            ##
 ##                                                                                                      ##
 ##########################################################################################################
@@ -71,7 +71,7 @@ Restore_Colors='n'
 #############################################################################
 language='de'
 #############################################################################
-installed_version='0.7.1'
+installed_version='0.7.2'
 first_start='y'
 activate_theme='y'
 
@@ -86,6 +86,7 @@ else
 	echo "all Theme data will delete"
 fi
 	sed -i 's/Restore_Colors="n"/Restore_Colors="y"/gI' /boot/extra/uuct/change/uuct.sh
+	sed -i "s/#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/#ff8c2f/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	sleep 1
 	sh /boot/extra/uuct/change/uuct.sh
 	cp /boot/extra/uuct/backup/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
@@ -174,6 +175,7 @@ fi
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
 	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
+	echo "ff8c2f" >> /boot/extra/uuct/backup/color.cfg
 fi
 
 if [ $language = 'de' ] || [ $language = 'de' ]; then
@@ -234,26 +236,6 @@ else
 fi
 
 else 
-
-if [ -d /boot/extra/uuct/backup ]; then
-	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
-	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
-	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Light_Color='$Light_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
-	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
-	sleep 3
-else
-if [ $language = 'de' ] || [ $language = 'de' ]; then
-	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
-else
-	echo ""
-fi
-fi
 
 
 if ! [[ $Dark_Color =~ ^[0-9A-Fa-f]{6}$ ]] ; then
@@ -334,10 +316,35 @@ sed -i "s/0062ab/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
 sed -i "s/ffffff/$Text/gI" /boot/extra/uuct/change/uuct.sh
 sed -i "s/00ddfe/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
 sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/extra/uuct/change/uuct.sh
-
 new_light_color="#$Light_Color"
-cp /boot/extra/uuct/backup/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
-sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+
+#cp /boot/extra/uuct/backup/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+
+
+if [ -d /boot/extra/uuct/backup ]; then
+	sed -i "s/#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
+	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
+	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Light_Color='$Light_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
+	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
+	echo "$Light_Color" >> /boot/extra/uuct/backup/color.cfg
+	sleep 3
+else
+
+if [ $language = 'de' ] || [ $language = 'de' ]; then
+	sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
+else
+	echo ""
+fi
+fi
+
 
 sh /boot/extra/uuct/change/uuct.sh
 

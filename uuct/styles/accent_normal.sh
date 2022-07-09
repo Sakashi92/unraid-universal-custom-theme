@@ -429,7 +429,7 @@ else
 fi
 ######################################################################
 if [ $Restore_Colors = 'Y' ] || [ $Restore_Colors = 'y' ]; then
-	echo "Original Icons wiederhergestellt"
+	echo "Original Farben wiederhergestellt"
 	cp /tmp/Original_Theme_Files/power.png /usr/local/emhttp/plugins/dynamix.system.buttons/icons/power.png
 	#echo ""
 	exit 1
