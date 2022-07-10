@@ -89,7 +89,6 @@ fi
 	sed -i "s/#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/#ff8c2f/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	sleep 1
 	sh /boot/extra/uuct/change/uuct.sh
-	cp /boot/extra/uuct/backup/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 	rm -r /boot/config/plugins/theme.engine/theme.engine.cfg
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.css
@@ -164,7 +163,6 @@ else
 fi
 	mkdir /boot/extra/uuct/backup
 	touch /boot/extra/uuct/backup/color.cfg
-	cp /usr/local/emhttp/plugins/user.scripts/Userscripts.page /boot/extra/uuct/backup/Userscripts.page
 	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
 	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
 	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
@@ -201,11 +199,7 @@ fi
 	cp -r /tmp/unraid-universal-custom-theme-dev/uuct /boot/extra/
 	rm -r dev.zip
 	rm -r unraid-universal-custom-theme-dev
-if [ $language = 'de' ] || [ $language = 'de' ]; then
-	echo "Es wird nach ein vorhandenes Backup geschaut."
-else
-	echo "An existing backup is checked."
-fi
+
 if [ -d /boot/extra/uuct/change ]; then
 	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/extra/uuct/change/uuct.sh
 	cp /boot/extra/uuct/styles/uuct.css /boot/config/plugins/theme.engine/themes/uuct-black.css
@@ -317,8 +311,6 @@ sed -i "s/ffffff/$Text/gI" /boot/extra/uuct/change/uuct.sh
 sed -i "s/00ddfe/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
 sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/extra/uuct/change/uuct.sh
 new_light_color="#$Light_Color"
-
-#cp /boot/extra/uuct/backup/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 
 
 if [ -d /boot/extra/uuct/backup ]; then
