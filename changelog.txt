@@ -1,4 +1,9 @@
 Changelog:
+unRIAD Universal Custom Theme V0.7.5:
+- delete static Userscript page
+- added new theme function for Userscript page / update from this is no longer a problem
+- added minor bugfixes and changes
+
 unRIAD Universal Custom Theme V0.7:
 - added eng translation
 - added menu for the installer

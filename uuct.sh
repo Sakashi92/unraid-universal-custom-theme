@@ -7,7 +7,7 @@
 ##       ##    ##   ##    ##  ##          ##	           ## ##      ##   ## ## ##         ##          ##
 ##       ########   ########   ######     ##	      #######  ###### ##   ## ## ##         ##          ##
 ##                                                                                                      ##
-##                               unRAID Universal Custom Theme v0.7.2                                   ##
+##                               unRAID Universal Custom Theme v0.7.5                                   ##
 ##                                       Created by: Sakashi                                            ##
 ##                                                                                                      ##
 ##########################################################################################################
@@ -71,7 +71,7 @@ Restore_Colors='n'
 #############################################################################
 language='de'
 #############################################################################
-installed_version='0.7.2'
+installed_version='0.7.5'
 first_start='y'
 activate_theme='y'
 
@@ -89,6 +89,7 @@ fi
 	sed -i "s/#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/#ff8c2f/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	sleep 1
 	sh /boot/extra/uuct/change/uuct.sh
+	cp /boot/extra/uuct/backup/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 	rm -r /boot/config/plugins/theme.engine/theme.engine.cfg
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.css
@@ -153,7 +154,6 @@ fi
 	sed -i "37s/Background='000000'/$(cat /boot/extra/uuct/backup/color.cfg | head -n7 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	sed -i "38s/Text='ffffff'/$(cat /boot/extra/uuct/backup/color.cfg | head -n8 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	sed -i "47s/RGB_Color='0, 98, 170'/$(cat /boot/extra/uuct/backup/color.cfg | head -n9 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
-	cat /boot/extra/uuct/backup/color.cfg
 	sleep 3
 else
 if [ $language = 'de' ] || [ $language = 'de' ]; then
@@ -163,6 +163,7 @@ else
 fi
 	mkdir /boot/extra/uuct/backup
 	touch /boot/extra/uuct/backup/color.cfg
+	cp /usr/local/emhttp/plugins/user.scripts/Userscripts.page /boot/extra/uuct/backup/Userscripts.page
 	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
 	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
 	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
@@ -310,10 +311,11 @@ sed -i "s/0062ab/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
 sed -i "s/ffffff/$Text/gI" /boot/extra/uuct/change/uuct.sh
 sed -i "s/00ddfe/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
 sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/extra/uuct/change/uuct.sh
+
 new_light_color="#$Light_Color"
 
-
 if [ -d /boot/extra/uuct/backup ]; then
+	sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	sed -i "s/#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
 	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
@@ -328,13 +330,7 @@ if [ -d /boot/extra/uuct/backup ]; then
 	echo "$Light_Color" >> /boot/extra/uuct/backup/color.cfg
 	sleep 3
 else
-
-if [ $language = 'de' ] || [ $language = 'de' ]; then
 	sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
-	echo "Es ist kein Backup vorhanden. Backup wird erstellt."
-else
-	echo ""
-fi
 fi
 
 
