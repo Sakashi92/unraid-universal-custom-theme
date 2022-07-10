@@ -7,7 +7,7 @@
 ##       ##    ##   ##    ##  ##          ##	           ## ##      ##   ## ## ##         ##          ##
 ##       ########   ########   ######     ##	      #######  ###### ##   ## ## ##         ##          ##
 ##                                                                                                      ##
-##                               unRAID Universal Custom Theme v0.7.5                                   ##
+##                               unRAID Universal Custom Theme v0.7.6                                   ##
 ##                                       Created by: Sakashi                                            ##
 ##                                                                                                      ##
 ##########################################################################################################
@@ -71,7 +71,7 @@ Restore_Colors='n'
 #############################################################################
 language='de'
 #############################################################################
-installed_version='0.7.5'
+installed_version='0.7.6'
 first_start='y'
 activate_theme='y'
 
@@ -85,15 +85,16 @@ else
 	echo "The complete theme is in reseting"
 	echo "all Theme data will delete"
 fi
-	sed -i 's/Restore_Colors="n"/Restore_Colors="y"/gI' /boot/extra/uuct/change/uuct.sh
+	sed -i 's/Restore_Colors="n"/Restore_Colors="y"/gI' /boot/config/plugins/user.scripts/scripts/uuct/script
 	sed -i "s/#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/#ff8c2f/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+	sed -i "s/#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/#ff8c2f/gI" /usr/local/emhttp/plugins/compose.manager/php/compose_manager_main.php
 	sleep 1
-	sh /boot/extra/uuct/change/uuct.sh
-	cp /boot/extra/uuct/backup/Userscripts.page /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+	sh /boot/config/plugins/user.scripts/scripts/uuct/script
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 	rm -r /boot/config/plugins/theme.engine/theme.engine.cfg
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.css
 	rm -r /boot/extra/uuct
+	rm -r /boot/config/plugins/user.scripts/scripts/uuct
 	rm -r /boot/config/plugins/user.scripts/scripts/uuct_helper
 	
 if [ $language = 'de' ] || [ $language = 'de' ]; then
@@ -163,7 +164,6 @@ else
 fi
 	mkdir /boot/extra/uuct/backup
 	touch /boot/extra/uuct/backup/color.cfg
-	cp /usr/local/emhttp/plugins/user.scripts/Userscripts.page /boot/extra/uuct/backup/Userscripts.page
 	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
 	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
 	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
@@ -200,18 +200,28 @@ fi
 	cp -r /tmp/unraid-universal-custom-theme-dev/uuct /boot/extra/
 	rm -r dev.zip
 	rm -r unraid-universal-custom-theme-dev
-
-if [ -d /boot/extra/uuct/change ]; then
-	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/extra/uuct/change/uuct.sh
-	cp /boot/extra/uuct/styles/uuct.css /boot/config/plugins/theme.engine/themes/uuct-black.css
-	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
+if [ $language = 'de' ] || [ $language = 'de' ]; then
+	echo "Es wird nach ein vorhandenes Backup geschaut."
 else
-	mkdir /boot/extra/uuct/change
-	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/extra/uuct/change/uuct.sh
+	echo "An existing backup is checked."
+fi
+
+if [ -d /boot/config/plugins/user.scripts/scripts/uuct ]; then
+	echo ""
+else
+if [ $language = 'de' ] || [ $language = 'de' ]; then
+	echo "Der Ordner /boot/config/plugins/user.scripts/scripts/uuct kann nicht gefunden werden. Wird erstellt..."
+else
+	echo "the folder /boot/config/plugins/user.scripts/scripts/uuct cannot found. is created..."
+fi
+	mkdir /boot/config/plugins/user.scripts/scripts/uuct
+	touch /boot/config/plugins/user.scripts/scripts/uuct/name
+	touch /boot/config/plugins/user.scripts/scripts/uuct/script
+	echo "uuct" > /boot/config/plugins/user.scripts/scripts/uuct/name
+	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 	cp /boot/extra/uuct/styles/uuct.css /boot/config/plugins/theme.engine/themes/uuct-black.css
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 fi
-
 	echo "######################################################################"
 	echo "######################################################################"
 	echo "######################################################################"
@@ -231,7 +241,6 @@ else
 fi
 
 else 
-
 
 if ! [[ $Dark_Color =~ ^[0-9A-Fa-f]{6}$ ]] ; then
 
@@ -285,11 +294,14 @@ if [ $Custom_Icon = 'Y' ] || [ $Custom_Icon = 'y' ]; then
 	sed -i 's/Custom_Icon="y"/Custom_Icon="n"/gI' /boot/extra/uuct/styles/accent_normal.sh
 fi
 
-if [ -d /boot/extra/uuct/change ]; then
+if [ -d /boot/config/plugins/user.scripts/scripts/uuct ]; then
 	echo ""
 else
-	mkdir /boot/extra/uuct/change/uuct.sh
-	cp /boot/extra/uuct/styles/accent_normal.sh /boot/extra/uuct/change/uuct.sh
+	mkdir /boot/config/plugins/user.scripts/scripts/uuct
+	touch /boot/config/plugins/user.scripts/scripts/uuct/name
+	touch /boot/config/plugins/user.scripts/scripts/uuct/script
+	echo "uuct" > /boot/config/plugins/user.scripts/scripts/uuct/name
+	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 fi
 
 if [ $activate_theme = 'Y' ] || [ $activate_theme = 'y' ]; then
@@ -299,24 +311,14 @@ if [ $activate_theme = 'Y' ] || [ $activate_theme = 'y' ]; then
 	echo ""
 fi
 
-
-
-cat /boot/extra/uuct/styles/accent_normal.sh > /boot/extra/uuct/change/uuct.sh
-sed -i "s/42ADFA/$Light_Color/gI" /boot/extra/uuct/change/uuct.sh
-sed -i "s/00378F/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
-sed -i "s/0062aa/$Light_Color/gI" /boot/extra/uuct/change/uuct.sh
-sed -i "s/030303/$Dark_Color_Title/gI" /boot/extra/uuct/change/uuct.sh
-sed -i "s/000000/$Background/gI" /boot/extra/uuct/change/uuct.sh
-sed -i "s/0062ab/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
-sed -i "s/ffffff/$Text/gI" /boot/extra/uuct/change/uuct.sh
-sed -i "s/00ddfe/$Dark_Color/gI" /boot/extra/uuct/change/uuct.sh
-sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/extra/uuct/change/uuct.sh
-
 new_light_color="#$Light_Color"
+old_light_color="#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)"
+sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/compose.manager/php/compose_manager_main.php
+sed -i "s/$old_light_color/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+sed -i "s/$old_light_color/$new_light_color/gI" /usr/local/emhttp/plugins/compose.manager/php/compose_manager_main.php
 
 if [ -d /boot/extra/uuct/backup ]; then
-	sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
-	sed -i "s/#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
 	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
 	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
@@ -328,17 +330,27 @@ if [ -d /boot/extra/uuct/backup ]; then
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
 	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
 	echo "$Light_Color" >> /boot/extra/uuct/backup/color.cfg
-	sleep 3
 else
-	sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+	echo ""
 fi
 
+cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
+sed -i "s/42ADFA/$Light_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
+sed -i "s/00378F/$Dark_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
+sed -i "s/0062aa/$Light_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
+sed -i "s/030303/$Dark_Color_Title/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
+sed -i "s/000000/$Background/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
+sed -i "s/0062ab/$Dark_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
+sed -i "s/ffffff/$Text/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
+sed -i "s/00ddfe/$Dark_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
+sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
 
-sh /boot/extra/uuct/change/uuct.sh
+sh /boot/config/plugins/user.scripts/scripts/uuct/script
 
 echo "############################################################################################################"
 if [ $language = 'de' ] || [ $language = 'de' ]; then
-	echo "#   Zuletzt nur noch das Script uuct_helper automatisch mit dem Array starten lassen.                             "
+	echo "#   Zuletzt nur noch das Script uuct_helper automatisch mit dem Array starten lassen.                      "
+	echo "#   Das uuct script muss in User Scripts vorhanden sein und darf nicht gelöscht werden!                    "
 	echo "#   Farben kannst du mit dem Script hier bequem einstellen.                                                "
 	echo "#   Unter Einstellungen -> Anzeigeeinstellungen  kannst du noch Farben für den Header bereich einstellen   "
 	echo "#   Unter Einstellungen -> Theme Engine kannst du auch die Green Orbs anpassen in der Farbe die du willst. "
@@ -347,6 +359,7 @@ if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "#   die Farben umwandeln: https://www.farb-tabelle.de/de/farbtabelle.htm "
 else
 	echo "#   Finally, let the uuct_helper script start automatically with the array.                             "
+	echo "#   uuct script dont delete from user script this script must available!                    "
 	echo "#   You can easily set colors with the script here.                                                "
 	echo "#   Under Settings -> Display settings you can set colors for the header area   "
 	echo "#   Under Settings -> Theme Engine you can also customize the Green Orbs to the color you want. "
