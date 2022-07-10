@@ -40,7 +40,7 @@ echo "Daten werden nun heruntergeladen und vorhandene überschrieben"
 echo "#############################################################################################"
 sleep 1
 wget -P /boot/config/plugins/user.scripts/scripts/uuct_helper https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/uuct.sh
-echo /boot/config/plugins/user.scripts/scripts/uuct_helper/uuct.sh > /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+cat /boot/config/plugins/user.scripts/scripts/uuct_helper/uuct.sh > /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 rm -r /boot/config/plugins/user.scripts/scripts/uuct_helper/uuct.sh
 touch /boot/config/plugins/user.scripts/scripts/uuct_helper/name
 echo "uuct_helper" > /boot/config/plugins/user.scripts/scripts/uuct_helper/name
@@ -71,7 +71,7 @@ echo "Data will now be downloaded and existing ones will be overwritten"
 echo "#############################################################################################"
 sleep 1
 wget -P /boot/config/plugins/user.scripts/scripts/uuct_helper https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/uuct.sh
-echo /boot/config/plugins/user.scripts/scripts/uuct_helper/uuct.sh > /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+cat /boot/config/plugins/user.scripts/scripts/uuct_helper/uuct.sh > /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 rm -r /boot/config/plugins/user.scripts/scripts/uuct_helper/uuct.sh
 touch /boot/config/plugins/user.scripts/scripts/uuct_helper/name
 echo "uuct_helper" > /boot/config/plugins/user.scripts/scripts/uuct_helper/name
