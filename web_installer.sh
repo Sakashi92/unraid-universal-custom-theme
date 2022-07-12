@@ -18,7 +18,7 @@ select opt in "${options[@]}"
 do
         case $opt in
                 "Deutsch")
-if [ "$offline_version" != "$online_version" ]
+if [ "$offline_version_de" != "$online_version" ]
 then
 	echo -e "\nHier gibts ein Update"
 	echo "###########################"
@@ -63,7 +63,7 @@ fi
                         ;;
                 "english")
 				
-if [ "$offline_version" != "$online_version" ]
+if [ "$offline_version_en" != "$online_version" ]
 then
     echo -e "\nHere is a Update"
 	echo "###########################"
