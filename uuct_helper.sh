@@ -7,7 +7,7 @@
 ##       ##    ##   ##    ##  ##          ##	           ## ##      ##   ## ## ##         ##          ##
 ##       ########   ########   ######     ##	      #######  ###### ##   ## ## ##         ##          ##
 ##                                                                                                      ##
-##                               unRAID Universal Custom Theme v0.7.6                                   ##
+##                               unRAID Universal Custom Theme v0.7.8                                   ##
 ##                                       Created by: Sakashi                                            ##
 ##                                                                                                      ##
 ##########################################################################################################
@@ -17,12 +17,12 @@
 ##Custom_Icon = passend zum schwarzen background | Custom_Icon = Custom icons for the black Background  ##
 ## n = nein / no    |    y = ja / yes                                                                   ##
 ##########################################################################################################
-Custom_Icon='y'
+Custom_Icon='n'
 ##########################################################################################################
 ## Benutzerdefinierte Navigationsleiste  |  Custom Navigationbar                                        ##
 ## n = nein / no    |    y = ja / yes      |  c = mitte | center                                        ##
 ##########################################################################################################
-navbar_swap='y'
+navbar_swap='n'
 ##########################################################################################################
 ## Blauer Accent | 0062aa = Dunkelblau | 00ddfe = Hellblau                                              ##
 ## blue accent   | 0062aa = dark blue  | 00ddfe = light blue                                            ##
@@ -69,11 +69,11 @@ Restore_Colors='n'
 #############################################################################
 ##Deine Sprache de oder en | your language de or en
 #############################################################################
-language='en'
+language='de'
 #############################################################################
-installed_version='0.7.6'
-first_start='n'
-activate_theme='n'
+installed_version='0.7.8'
+first_start='y'
+activate_theme='y'
 
 if [ $Restore_Colors = 'Y' ] || [ $Restore_Colors = 'y' ]; then
 
@@ -224,7 +224,7 @@ fi
 	touch /boot/config/plugins/user.scripts/scripts/uuct/name
 	touch /boot/config/plugins/user.scripts/scripts/uuct/script
 	echo "uuct" > /boot/config/plugins/user.scripts/scripts/uuct/name
-	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
+	cat /boot/extra/uuct/styles/uuct.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 	cp /boot/extra/uuct/styles/uuct.css /boot/config/plugins/theme.engine/themes/uuct-black.css
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 fi
@@ -293,9 +293,9 @@ fi
 fi
  	
 if [ $Custom_Icon = 'Y' ] || [ $Custom_Icon = 'y' ]; then
-	sed -i 's/Custom_Icon="n"/Custom_Icon="y"/gI' /boot/extra/uuct/styles/accent_normal.sh
+	sed -i 's/Custom_Icon="n"/Custom_Icon="y"/gI' /boot/extra/uuct/styles/uuct.sh
 	else
-	sed -i 's/Custom_Icon="y"/Custom_Icon="n"/gI' /boot/extra/uuct/styles/accent_normal.sh
+	sed -i 's/Custom_Icon="y"/Custom_Icon="n"/gI' /boot/extra/uuct/styles/uuct.sh
 fi
 
 if [ -d /boot/config/plugins/user.scripts/scripts/uuct ]; then
@@ -305,7 +305,7 @@ else
 	touch /boot/config/plugins/user.scripts/scripts/uuct/name
 	touch /boot/config/plugins/user.scripts/scripts/uuct/script
 	echo "uuct" > /boot/config/plugins/user.scripts/scripts/uuct/name
-	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
+	cat /boot/extra/uuct/styles/uuct.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 fi
 
 if [ $activate_theme = 'Y' ] || [ $activate_theme = 'y' ]; then
@@ -315,7 +315,7 @@ if [ $activate_theme = 'Y' ] || [ $activate_theme = 'y' ]; then
 	echo ""
 fi
 
-cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
+cat /boot/extra/uuct/styles/uuct.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/42ADFA/$Light_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/00378F/$Dark_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/0062aa/$Light_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
@@ -359,6 +359,7 @@ if [ -d /boot/extra/uuct/backup ]; then
 	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
+
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
 	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
 	echo "$Light_Color" >> /boot/extra/uuct/backup/color.cfg
