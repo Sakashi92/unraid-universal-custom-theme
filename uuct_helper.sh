@@ -14,9 +14,11 @@
 ##                                Benutzereingabe Start  / Custom Settings Start                        ##
 ##########################################################################################################
 ##########################################################################################################
-##Custom_Icon = passend zum schwarzen background | Custom_Icon = Custom icons for the black Background  ##
+## Black_Login = Schwarzer Hintergrund | Custom_Icon = zum schwarzen Hintergrund passende Icons         ##
+## Black_Login = Black Background | Custom_Icon = Custom icons for the black Background                 ##
 ## n = nein / no    |    y = ja / yes                                                                   ##
 ##########################################################################################################
+Login_Mod='n'
 Custom_Icon='n'
 ##########################################################################################################
 ## Benutzerdefinierte Navigationsleiste  |  Custom Navigationbar                                        ##
@@ -29,13 +31,11 @@ navbar_swap='n'
 ## Hex Farben ohne # benutzen!                                                                          ##
 ## hex color without #!                                                                                 ##
 ##########################################################################################################
-Dark_Color='42ADFA'
+Dark_Color='0062aa'
 Light_Color='0062aa'
-Dark_Color_Title='42ADFA'    # Hintergrundfarbe der Abschnitte für Farbverlauf *1                       ##
+Dark_Color_Title='000000'    # Hintergrundfarbe der Abschnitte für Farbverlauf *1                       ##
 Background='000000'          # Hintergrundfarbe | Background color             *2                       ##
 Text='ffffff'                # Textfarbe der kompletten Schrift | textcolor for all the text *3         ##
-Login_Box_Background='000000'
-Login_Background='080808'
 ##########################################################################################################
 ## *1 = titlecolor for column in rainbow | *2 = background color for the page                           ##
 ## *3 = textcolor for complete text in unraid                                                           ##
@@ -88,8 +88,6 @@ fi
 	sed -i 's/Restore_Colors="n"/Restore_Colors="y"/gI' /boot/config/plugins/user.scripts/scripts/uuct/script
 	sed -i "s/#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/#ff8c2f/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
 	sed -i "s/#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)/#ff8c2f/gI" /usr/local/emhttp/plugins/compose.manager/php/compose_manager_main.php
-	sed -i "1s/#$Login_Box_Background/#2B2A29/gI" /usr/local/emhttp/webGui/include/.login.php
-	sed -i "2s/#$Login_Background/#1C1B1B/gI" /usr/local/emhttp/webGui/include/.login.php
 	sleep 1
 	sh /boot/config/plugins/user.scripts/scripts/uuct/script
 	rm -r /boot/config/plugins/theme.engine/themes/uuct-black.cfg
@@ -148,7 +146,7 @@ if [ $language = 'de' ] || [ $language = 'de' ]; then
 else
 	echo "Backup of variables found. Will be restored"
 fi
-	sed -i "21s/Black_Login='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n1 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+	sed -i "21s/Login_Mod='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n1 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	sed -i "22s/Custom_Icon='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n2 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	sed -i "27s/navbar_swap='n'/$(cat /boot/extra/uuct/backup/color.cfg | head -n3 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	sed -i "34s/Dark_Color='0062aa'/$(cat /boot/extra/uuct/backup/color.cfg | head -n4 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
@@ -157,8 +155,6 @@ fi
 	sed -i "37s/Background='000000'/$(cat /boot/extra/uuct/backup/color.cfg | head -n7 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	sed -i "38s/Text='ffffff'/$(cat /boot/extra/uuct/backup/color.cfg | head -n8 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	sed -i "47s/RGB_Color='0, 98, 170'/$(cat /boot/extra/uuct/backup/color.cfg | head -n9 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
-	sed -i "37s/Login_Box_Background='1C1B1B'/$(cat /boot/extra/uuct/backup/login.cfg | head -n1 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
-	sed -i "38s/Login_Background='2B2A29'/$(cat /boot/extra/uuct/backup/login.cfg | head -n2 | tail -n1)/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	sleep 3
 else
 if [ $language = 'de' ] || [ $language = 'de' ]; then
@@ -168,7 +164,7 @@ else
 fi
 	mkdir /boot/extra/uuct/backup
 	touch /boot/extra/uuct/backup/color.cfg
-	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
+	echo "Login_Mod='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
 	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
 	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
 	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
@@ -179,20 +175,18 @@ fi
 	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
 	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
 	echo "ff8c2f" >> /boot/extra/uuct/backup/color.cfg
-	echo "$Login_Box_Background" > /boot/extra/uuct/backup/login.cfg
-	echo "$Login_Background" >> /boot/extra/uuct/backup/login.cfg
 fi
 
 if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo "######################################################################"
-	echo "Willkommen im unRAID Universal Custom Theme installer / Updater."
-	echo "Der installer / updater startet, es werden einige Daten von github heruntergeladen."
+	echo "Willkommen im unRAID Universal Custom Theme installer."
+	echo "Da du den installer das erste mal startest werden einige Daten von github heruntergeladen."
 	echo "Github: https://github.com/Sakashi92/unraid-universal-custom-theme/"
 	echo "Die Daten werden in /boot/extra/uuct abgelegt und sind für das Theme notwendig."
 else
 	echo "######################################################################"
-	echo "Welcome to the unRAID Universal Custom Theme installer / updater."
-	echo "The installer / updater is starting, some data will be downloaded from github."
+	echo "Welcome to the unRAID Universal Custom Theme installer."
+	echo "Since you are starting the installer for the first time, some data will be downloaded from github."
 	echo "Github: https://github.com/Sakashi92/unraid-universal-custom-theme/"
 	echo "The data is stored in /boot/extra/uuct and is necessary for the theme."
 fi
@@ -224,7 +218,7 @@ fi
 	touch /boot/config/plugins/user.scripts/scripts/uuct/name
 	touch /boot/config/plugins/user.scripts/scripts/uuct/script
 	echo "uuct" > /boot/config/plugins/user.scripts/scripts/uuct/name
-	cat /boot/extra/uuct/styles/uuct.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
+	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 	cp /boot/extra/uuct/styles/uuct.css /boot/config/plugins/theme.engine/themes/uuct-black.css
 	cp /boot/extra/uuct/styles/uuct.cfg /boot/config/plugins/theme.engine/themes/uuct-black.cfg
 fi
@@ -238,17 +232,14 @@ if [ $language = 'de' ] || [ $language = 'de' ]; then
 	echo " Die Farben werden in hex ohne # angegeben. Die Ausnahme machen die Akzente in der Navbar."
 	echo " Die Farben in der Navbar werden in RGB angegeben. Einfach mit dem verlinkten Tool"
 	echo " die Farben umwandeln: https://www.farb-tabelle.de/de/farbtabelle.htm "
-        echo ' Bitte warten bis der "Fertig" Button erscheint.'
 else
 	echo " preparations complete."
 	echo " Just edit the script with your color values ​​and then run it again."
 	echo " The colors are given in hex without #. The exception are the accents in the navbar."
 	echo " The colors in the navbar are specified in RGB. Simply with the linked tool"
 	echo " convert the colors: https://www.farb-tabelle.de/de/farbtabelle.htm "
-        echo ' Please wait with the "Finish" Button is visible.'
 fi
 
-sleep 10
 sh /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 
 else 
@@ -293,9 +284,9 @@ fi
 fi
  	
 if [ $Custom_Icon = 'Y' ] || [ $Custom_Icon = 'y' ]; then
-	sed -i 's/Custom_Icon="n"/Custom_Icon="y"/gI' /boot/extra/uuct/styles/uuct.sh
+	sed -i 's/Custom_Icon="n"/Custom_Icon="y"/gI' /boot/extra/uuct/styles/accent_normal.sh
 	else
-	sed -i 's/Custom_Icon="y"/Custom_Icon="n"/gI' /boot/extra/uuct/styles/uuct.sh
+	sed -i 's/Custom_Icon="y"/Custom_Icon="n"/gI' /boot/extra/uuct/styles/accent_normal.sh
 fi
 
 if [ -d /boot/config/plugins/user.scripts/scripts/uuct ]; then
@@ -305,7 +296,7 @@ else
 	touch /boot/config/plugins/user.scripts/scripts/uuct/name
 	touch /boot/config/plugins/user.scripts/scripts/uuct/script
 	echo "uuct" > /boot/config/plugins/user.scripts/scripts/uuct/name
-	cat /boot/extra/uuct/styles/uuct.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
+	cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 fi
 
 if [ $activate_theme = 'Y' ] || [ $activate_theme = 'y' ]; then
@@ -315,7 +306,30 @@ if [ $activate_theme = 'Y' ] || [ $activate_theme = 'y' ]; then
 	echo ""
 fi
 
-cat /boot/extra/uuct/styles/uuct.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
+new_light_color="#$Light_Color"
+old_light_color="#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)"
+sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/compose.manager/php/compose_manager_main.php
+sed -i "s/$old_light_color/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
+sed -i "s/$old_light_color/$new_light_color/gI" /usr/local/emhttp/plugins/compose.manager/php/compose_manager_main.php
+
+if [ -d /boot/extra/uuct/backup ]; then
+	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
+	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
+	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Light_Color='$Light_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
+	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
+	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
+	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
+	echo "$Light_Color" >> /boot/extra/uuct/backup/color.cfg
+else
+	echo ""
+fi
+
+cat /boot/extra/uuct/styles/accent_normal.sh > /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/42ADFA/$Light_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/00378F/$Dark_Color/gI" /boot/config/plugins/user.scripts/scripts/uuct/script
 sed -i "s/0062aa/$Light_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
@@ -327,47 +341,6 @@ sed -i "s/00ddfe/$Dark_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-b
 sed -i "s/0, 98, 170/$RGB_Color/gI" /boot/config/plugins/theme.engine/themes/uuct-black.css
 
 sh /boot/config/plugins/user.scripts/scripts/uuct/script
-
-new_light_color="#$Light_Color"
-old_light_color="#$(cat /boot/extra/uuct/backup/color.cfg | head -n11 | tail -n1)"
-sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
-sed -i "s/#ff8c2f/$new_light_color/gI" /usr/local/emhttp/plugins/compose.manager/php/compose_manager_main.php
-sed -i "s/$old_light_color/$new_light_color/gI" /usr/local/emhttp/plugins/user.scripts/Userscripts.page
-sed -i "s/$old_light_color/$new_light_color/gI" /usr/local/emhttp/plugins/compose.manager/php/compose_manager_main.php
-
-Login_Box_Background_old="#$(cat /boot/extra/uuct/backup/login.cfg | head -n1 | tail -n1)"
-Login_Box_Background_new="#$Login_Box_Background"
-Login_Background_old="#$(cat /boot/extra/uuct/backup/login.cfg | head -n2 | tail -n1)"
-Login_Background_new="#$Login_Background"
-
-sed -i "362s/#2B2A29/$Login_Box_Background_new/gI" /usr/local/emhttp/webGui/include/.login.php
-sed -i "362s/$Login_Box_Background_old/$Login_Box_Background_new/gI" /usr/local/emhttp/webGui/include/.login.php
-
-sed -i "454s/#2B2A29/$Login_Box_Background_new/gI" /usr/local/emhttp/webGui/include/.login.php
-sed -i "454s/$Login_Box_Background_old/$Login_Box_Background_new/gI" /usr/local/emhttp/webGui/include/.login.php
-
-sed -i "277s/#1C1B1B/$Login_Background_new/gI" /usr/local/emhttp/webGui/include/.login.php
-sed -i "277s/$Login_Background_old/$Login_Background_new/gI" /usr/local/emhttp/webGui/include/.login.php
-
-
-if [ -d /boot/extra/uuct/backup ]; then
-	echo "Black_Login='$Black_Login'" > /boot/extra/uuct/backup/color.cfg
-	echo "Custom_Icon='$Custom_Icon'" >> /boot/extra/uuct/backup/color.cfg
-	echo "navbar_swap='$navbar_swap'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Dark_Color='$Dark_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Light_Color='$Light_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Dark_Color_Title='$Dark_Color_Title'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Background='$Background'" >> /boot/extra/uuct/backup/color.cfg
-	echo "Text='$Text'" >> /boot/extra/uuct/backup/color.cfg
-
-	echo "RGB_Color='$RGB_Color'" >> /boot/extra/uuct/backup/color.cfg
-	echo "$installed_version" >> /boot/extra/uuct/backup/color.cfg
-	echo "$Light_Color" >> /boot/extra/uuct/backup/color.cfg
-	echo "$Login_Box_Background" > /boot/extra/uuct/backup/login.cfg
-	echo "$Login_Background" >> /boot/extra/uuct/backup/login.cfg
-else
-	echo ""
-fi
 
 echo "############################################################################################################"
 if [ $language = 'de' ] || [ $language = 'de' ]; then
