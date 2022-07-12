@@ -1,7 +1,12 @@
 #!/bin/sh
-#online_version=$(curl -s https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/cfg/version.cfg)
-offline_version=$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)
-online_version="0.9.7"
+online_version=$(curl -s https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/cfg/version.cfg)
+if [ -d /boot/extra/uuct/backup ]; then
+	offline_version_de=$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)
+	offline_version_en=$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)
+else
+	offline_version_de="Nicht Installiert"
+	offline_version_en="not installed"
+fi
 echo -e "Willkommen beim installer und Updater vom unRAID Universal Custom Theme."
 echo "Welche Sprache sprichst du? - Bitte auswählen und enter drücken."
 echo "#############################################################################"
@@ -15,7 +20,10 @@ do
                 "Deutsch")
 if [ "$offline_version" != "$online_version" ]
 then
-	echo "Hier ist ein Update von der Version $offline_version auf die $online_version"
+	echo -e "\nHier gibts ein Update"
+	echo "###########################"
+	echo "Lokal: $offline_version_de"
+	echo -e "Online: $online_version\n"
     echo "#############################################################################################"
 	echo "Bei einem Update gehen alle selbstgemachten Einstellungen nicht verloren,"
 	echo "solange du mindestens version 0.5 installiert hast. Alles davor hat keine Backup funktion"
@@ -57,7 +65,10 @@ fi
 				
 if [ "$offline_version" != "$online_version" ]
 then
-    echo "There is an update from the $offline_version to $online_version"
+    echo -e "\nHere is a Update"
+	echo "###########################"
+	echo "Local: $offline_version_en"
+	echo -e "Online:$online_version\n"
 	echo "#############################################################################################"
 	echo "With an update, all self-made settings are not lost"
 	echo "as long as you have at least version 0.5 installed. Everything before that has no backup function"
