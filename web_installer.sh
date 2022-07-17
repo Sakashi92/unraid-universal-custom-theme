@@ -1,8 +1,7 @@
 #!/bin/sh
 online_version=$(curl -s https://raw.githubusercontent.com/Sakashi92/unraid-universal-custom-theme/dev/cfg/version.cfg)
 if [ -d /boot/extra/uuct/backup ]; then
-	offline_version_de=$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)
-	offline_version_en=$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)
+	offline_version=$(cat /boot/extra/uuct/backup/color.cfg | head -n10 | tail -n1)
 else
 	offline_version_de="Nicht Installiert"
 	offline_version_en="not installed"
@@ -18,11 +17,11 @@ select opt in "${options[@]}"
 do
         case $opt in
                 "Deutsch")
-if [ "$offline_version_de" != "$online_version" ]
+if [ "$offline_version" != "$online_version" ]
 then
 	echo -e "\nHier gibts ein Update"
 	echo "###########################"
-	echo "Lokal: $offline_version_de"
+	echo "Lokal: $offline_version"
 	echo -e "Online: $online_version\n"
     echo "#############################################################################################"
 	echo "Bei einem Update gehen alle selbstgemachten Einstellungen nicht verloren,"
@@ -63,11 +62,11 @@ fi
                         ;;
                 "english")
 				
-if [ "$offline_version_en" != "$online_version" ]
+if [ "$offline_version" != "$online_version" ]
 then
     echo -e "\nHere is a Update"
 	echo "###########################"
-	echo "Local: $offline_version_en"
+	echo "Local: $offline_version"
 	echo -e "Online:$online_version\n"
 	echo "#############################################################################################"
 	echo "With an update, all self-made settings are not lost"
@@ -94,7 +93,7 @@ then
 	rm -r /boot/config/plugins/user.scripts/scripts/uuct_helper/uuct_helper.sh
 	touch /boot/config/plugins/user.scripts/scripts/uuct_helper/name
 	echo "uuct_helper" > /boot/config/plugins/user.scripts/scripts/uuct_helper/name
-	sed -i "72s/language='de'/language='en'/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
+	sed -i "76s/language='de'/language='en'/gI" /boot/config/plugins/user.scripts/scripts/uuct_helper/script
 	echo "#############################################################################################"
 	echo "Now please run the uuct_helper script in the user.scripts via the web interface."
 	echo "#############################################################################################"	
